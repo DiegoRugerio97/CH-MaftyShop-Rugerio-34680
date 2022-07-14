@@ -5,8 +5,11 @@ import './NavBar.css';
 // Se importa el logo desde dir de imagenes
 import logo from '../../img/Mafty.png';
 
+// Cart
+import CartWidget from '../CartWidget/CartWidget.js';
+
 const NavBar = () => {
-// Navbar colapsable responsive del BS
+    // Navbar colapsable responsive del BS
     return (
         <nav className="navbar navbar-expand-lg sticky-top nav navbar-dark">
             <img className='navLogo' src={logo} alt="Logo de Mafty Shop" />
@@ -15,7 +18,7 @@ const NavBar = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">
+                <ul className="navbar-nav">
                     <li className="nav-item">
                         <a className="nav-link" href="../../index.html">¿Quiénes somos?</a>
                     </li>
@@ -29,14 +32,15 @@ const NavBar = () => {
                         <a className="nav-link" href="../../index.html">Manga</a>
                     </li>
                 </ul>
-                <form className="form-inline">
+                <form className="form-inline my-2 my-lg-0">
                     <div className="input-group">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="basic-addon1"><i className="fa-solid fa-magnifying-glass"/></span>
+                            <span className="input-group-text" id="basic-addon1"><i className="fa-solid fa-magnifying-glass" /></span>
                         </div>
-                        <input type="text" className="form-control"/>
+                        <input type="text" className="form-control" />
                     </div>
                 </form>
+                <CartWidget/>
             </div>
         </nav>);
 
