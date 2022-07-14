@@ -1,8 +1,12 @@
+// Componente NavBar
+// Estilos
+// Propios y modificaciones de BS
 import './NavBar.css';
+// Se importa el logo desde dir de imagenes
 import logo from '../../img/Mafty.png';
 
 const NavBar = () => {
-
+// Navbar colapsable responsive del BS
     return (
         <nav className="navbar navbar-expand-lg sticky-top nav navbar-dark">
             <img className='navLogo' src={logo} alt="Logo de Mafty Shop" />
@@ -13,7 +17,7 @@ const NavBar = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <a className="nav-link" href="../../index.html">¿Quiénes somos?<span class="sr-only">(current)</span></a>
+                        <a className="nav-link" href="../../index.html">¿Quiénes somos?</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="../../index.html">Figuras</a>
