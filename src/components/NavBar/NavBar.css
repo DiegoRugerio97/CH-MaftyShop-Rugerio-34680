@@ -8,7 +8,6 @@
     backdrop-filter: saturate(180%) blur(20px);
 }
 
-
 .navLogo{
     width: 3rem;
     height: auto;
@@ -16,7 +15,6 @@
 }
 
 .navbar-brand{
-    color: rgb(240, 240, 240);
     font-family: 'Oswald', sans-serif;
     font-size: 2rem;
 }
@@ -26,17 +24,18 @@
 }
 
 .nav-link{
-    color: rgb(0, 0, 0);
+    color: rgba(216, 216, 216, 0.9) !important;
     font-family: 'Oswald', sans-serif;
     font-size: 1.5rem;
 }
 
 .nav-link:hover{
-    color: rgb(240, 240, 240);
+    color: rgb(240, 240, 240) !important;
 }
 
-.form-control{
-    border-color: none;
+.form-control:focus{
+    border-color: rgb(223, 223, 223);
+    box-shadow: none;
 }
 
 @media (min-width: 991px) { 
