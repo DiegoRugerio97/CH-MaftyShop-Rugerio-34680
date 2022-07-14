@@ -40,7 +40,8 @@ const NavBar = () => {
                         <input type="text" className="form-control" />
                     </div>
                 </form>
-                <CartWidget/>
+                {/* Se implementa el componente CartWidget */}
+                <CartWidget cantidadProductos = {10}/>
             </div>
         </nav>);
 

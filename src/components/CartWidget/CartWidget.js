@@ -2,9 +2,10 @@
 
 
 //Badge del BS
-const CartWidget = () => {
+// V1.0 - Se implementan props para mostrar la cantidad de productos
+const CartWidget = (props) => {
 
-    let cantidadProductos = 15;
+    let cantidadProductos = props.cantidadProductos | 0;
 
     return <>
         <button type="button" className="btn btn-dark position-relative">
