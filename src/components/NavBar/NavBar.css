@@ -38,9 +38,16 @@
     box-shadow: none;
 }
 
-@media (min-width: 991px) { 
+.navbar-collapse{
+    gap: 2rem;
+    padding: 0.5rem;
+}
+
+
+@media (min-width: 992px) { 
     .navbar-nav{
         gap: 5rem;
         margin: 0 auto;
+        align-items: center;
     }  
  }
