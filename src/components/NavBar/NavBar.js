@@ -4,46 +4,56 @@
 import './NavBar.css';
 // Se importa el logo desde dir de imagenes
 import logo from '../../img/Mafty.png';
-
 // Cart
 import CartWidget from '../CartWidget/CartWidget.js';
 
+// Componentes del react BS
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+
+
+
 const NavBar = () => {
-    // Navbar colapsable responsive del BS
+    // react-BS navbar
     return (
-        <nav className="navbar navbar-expand-lg sticky-top nav navbar-dark">
-            <img className='navLogo' src={logo} alt="Logo de Mafty Shop" />
-            <a className="navbar-brand" href="../../index.html">Mafty Shop</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <a className="nav-link" href="../../index.html">¿Quiénes somos?</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="../../index.html">Figuras</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="../../index.html">Gundam</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="../../index.html">Manga</a>
-                    </li>
-                </ul>
-                <form className="form-inline my-2 my-lg-0">
-                    <div className="input-group">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text" id="basic-addon1"><i className="fa-solid fa-magnifying-glass" /></span>
-                        </div>
-                        <input type="text" className="form-control" />
-                    </div>
-                </form>
-                {/* Se implementa el componente CartWidget */}
-                <CartWidget cantidadProductos = {10}/>
-            </div>
-        </nav>);
+        <Navbar bg="dark" expand="lg" variant="dark">
+            <Container>
+                <Navbar.Brand href="#home">
+                    <img
+                        alt=""
+                        src={logo}
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top navLogo"
+                    />
+                    <Navbar.Brand href="#home">Mafty Shop</Navbar.Brand>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link href="#home">¿Quiénes somos?</Nav.Link>
+                        <Nav.Link href="#link">Figuras</Nav.Link>
+                        <Nav.Link href="#link">Gundam</Nav.Link>
+                        <Nav.Link href="#link">Manga</Nav.Link>
+                    </Nav>
+                    <Form className="d-flex">
+                        <InputGroup className='d-flex'>
+                            <InputGroup.Text id="btnGroupAddon2"><i className="fa-solid fa-magnifying-glass" /></InputGroup.Text>
+                            <Form.Control
+                                type="text"
+                                placeholder="Buscar"
+                            />
+                        </InputGroup>
+                    </Form>
+                    {/* Se implementa el componente CartWidget */}
+                    <CartWidget cantidadProductos={10} />
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
 
 }
 
