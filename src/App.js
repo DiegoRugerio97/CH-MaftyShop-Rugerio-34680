@@ -2,14 +2,21 @@
 // App principal
 import './App.css';
 // Importacion ItemListContainer
-import ItemListContainer from './components/ItemListContainer/ItemListContainer.js';
+
 // Componente del NavBar
 import NavBar from './components/NavBar/NavBar.js';
+import ItemListContainer from './Items/ItemListContainer/ItemListContainer.js';
+
+
+import Container from 'react-bootstrap/Container';
 
 function App() {
   return (
-    <><NavBar />
-      <ItemListContainer greeting="Estamos en construccion!" /></>
+    <>
+    <NavBar />
+      <Container><ItemListContainer greeting="Estamos en construccion!" /></Container>
+    </>
+
 
   );
 }

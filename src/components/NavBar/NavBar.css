@@ -12,7 +12,10 @@
 
 .navbar-brand{
     font-family: 'Oswald', sans-serif;
-    font-size: 2.25rem !important;
+    font-size: 2rem !important;
+    display: flex;
+    flex-flow: row nowrap ;
+    align-items: center;
 }
 
 

@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Oswald:wght@200&display=swap");
+
+.item {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+  width: 20%;
+}
+
+.itemForm {
+  border: 1px solid black;
+  padding: 5px;
+  display: flex;
+  flex-flow: row nowrap;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.itemButton {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: white;
+  color: black;
+  padding: 5px;
+}
+
+.itemInput {
+  font-family: "Oswald", sans-serif;
+  padding: 5px;
+  text-align: center;
+  border: none;
+  width: 50%;
+}
+
+.itemInput:focus {
+  border-color: rgba(247, 247, 247, 0);
+}
+
+.addButton {
+    font-family: "Oswald", sans-serif;
+    padding: 4px;
+    font-size: 1.2rem;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: saturate(180%) blur(20px);
+    color: #fff;
+    width: 100%;
+}
+
+.disabledControls{
+    color: rgb(197, 197, 197);
+}

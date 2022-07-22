@@ -12,7 +12,7 @@ const CartWidget = (props) => {
 
     return <>
         <Button variant="dark" className="position-relative">
-            <i class="fa-solid fa-cart-shopping"></i> 
+            <i className="fa-solid fa-cart-shopping"/>
             <Badge className="position-absolute" bg="dark">{cantidadProductos}</Badge>
         </Button>
     </>;
