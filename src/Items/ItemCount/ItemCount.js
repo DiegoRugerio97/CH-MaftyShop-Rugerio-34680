@@ -18,22 +18,18 @@ const ItemCount = (props) => {
 
     // Effect for validation purposes, validates everytime counter changes and at mounting
     useEffect(() => {
-        if(props.stock === 0){
+        let isOutStock = props.stock === 0;
+        if(isOutStock){
             setNoStock(true);
             setCounter(0);
         }
-        if (counter > 1) {
-            setIsOne(false);
-        }
-        else {
-            setIsOne(true);
-        }
-        if (counter < props.stock) {
-            setIsOverStock(false);
-        }
-        else {
-            setIsOverStock(true);
-        }
+        
+        let biggerThanOne = counter > 1;
+        setIsOne(!biggerThanOne);
+
+        let lessThanStock = counter < props.stock;
+        setIsOverStock(!lessThanStock);
+
     }, [counter, props.stock])
 
     // Updating counter when clicked, if it is 1, doesn't subtract
