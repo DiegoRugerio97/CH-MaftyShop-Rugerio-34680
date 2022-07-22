@@ -13,18 +13,18 @@ import { useState } from 'react';
 
 function App() {
 
-  // States for testing of ItemCount component
+  // States for testing of ItemCount component - TEMP
   const [itemsInCart,setItemInCart] = useState(0);
   const [itemStock, setItemStock] = useState(20);
 
-  // onAdd function to test ItemCount component
+  // onAdd function to test ItemCount component - TEMP
   const onAdd = (items) =>{
     setItemInCart(prevState => prevState + items);
     setItemStock(prevState => prevState - items);
   }
 
   // Two components, NavBar to show CartWidget with itemsInCart state
-  // ItemListContainer to temporarily hold ItemCount
+  // ItemListContainer to temporarily hold ItemCount - TEMP
   return (
     <>
     <NavBar itemsInCart={itemsInCart}/>
