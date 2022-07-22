@@ -1,13 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Oswald:wght@200&display=swap");
 
+.itemForm{
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 5px;
+}
+
 .item {
   display: flex;
   flex-flow: column nowrap;
   gap: 10px;
-  width: 20%;
 }
 
-.itemForm {
+.itemGroup {
   border: 1px solid black;
   padding: 5px;
   display: flex;
@@ -53,4 +58,11 @@
 
 .disabledControls{
     color: rgb(197, 197, 197);
+}
+
+.itemStockDes{
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Oswald", sans-serif;
+  color: rgb(78, 78, 78);
 }

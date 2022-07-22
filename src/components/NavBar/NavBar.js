@@ -1,13 +1,12 @@
-// Componente NavBar
-// Estilos
-// Propios y modificaciones de BS
+
+// Styling
 import './NavBar.css';
-// Se importa el logo desde dir de imagenes
+// Logo image import
 import logo from '../../img/Mafty.png';
-// Cart
+// CartWidget component import
 import CartWidget from '../CartWidget/CartWidget.js';
 
-// Componentes del react BS
+// BS components
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -16,7 +15,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 
 
-const NavBar = () => {
+const NavBar = (props) => {
     // react-BS navbar
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
@@ -29,7 +28,7 @@ const NavBar = () => {
                         height="30"
                         className="d-inline-block align-top navLogo"
                     />{" "}
-                   Mafty Shop
+                    Mafty Shop
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -48,8 +47,8 @@ const NavBar = () => {
                             />
                         </InputGroup>
                     </Form>
-                    {/* Se implementa el componente CartWidget */}
-                    <CartWidget cantidadProductos={10} />
+                    {/* Implementation of CartWidget component with Items in Cart prop */}
+                    <CartWidget cantidadProductos={props.itemsInCart} />
                 </Navbar.Collapse>
             </Container>
         </Navbar>

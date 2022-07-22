@@ -14,9 +14,14 @@ const ItemCount = (props) => {
     const [counter, setCounter] = useState(props.initial);
     const [isOverStock, setIsOverStock] = useState(true);
     const [isOne, setIsOne] = useState(true);
+    const [noStock, setNoStock] = useState(false);
 
     // Effect for validation purposes, validates everytime counter changes and at mounting
     useEffect(() => {
+        if(props.stock === 0){
+            setNoStock(true);
+            setCounter(0);
+        }
         if (counter > 1) {
             setIsOne(false);
         }
@@ -58,6 +63,16 @@ const ItemCount = (props) => {
         return;
     }
 
+    // Adding items to Cart
+    const onAddHandler = (e) => {
+        e.preventDefault();
+        if(noStock){
+            return;
+        }
+        props.onAdd(counter);
+        setCounter(props.initial);
+    }
+
     // Dynamic styling
     let buttonClassAdd = `${isOverStock && "disabledControls"} itemButton`;
     let buttonClassSubstract = `${isOne && "disabledControls"} itemButton`;
@@ -65,12 +80,16 @@ const ItemCount = (props) => {
 
     return (
         <div className='item'>
-            <form className='itemForm'>
-                <button className={buttonClassSubstract} onClick={onSubtractItemHandler}><i className="fa-solid fa-minus" /></button>
-                <input value={counter} className='itemInput' onChange={onChangeItemHandler} />
-                <button className={buttonClassAdd} onClick={onAddItemHandler}><i className="fa-solid fa-plus" /></button>
+            <span className = "itemStockDes">Stock disponible: {props.stock}</span>
+            <form onSubmit={onAddHandler} className="itemForm">
+                <div className='itemGroup'>
+                    <button type="button" className={buttonClassSubstract} onClick={onSubtractItemHandler}><i className="fa-solid fa-minus" /></button>
+                    <input value={counter} className='itemInput' onChange={onChangeItemHandler} />
+                    <button type="button" className={buttonClassAdd} onClick={onAddItemHandler}><i className="fa-solid fa-plus" /></button>
+                </div>
+                <button type="submit" className="addButton">Agregar al carrito</button>
             </form>
-            <button type="Submit" onSubmit={props.onAdd} className="addButton">Agregar al carrito</button>
+            
         </div>
     );
 }
