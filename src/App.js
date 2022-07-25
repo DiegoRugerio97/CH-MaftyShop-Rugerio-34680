@@ -1,7 +1,7 @@
 
 import './App.css';
 //Importing components
-import ItemListContainer from './Items/ItemListContainer/ItemListContainer.js';
+import ItemListContainer from './components/Items/ItemListContainer/ItemListContainer.js';
 import NavBar from './components/NavBar/NavBar.js';
 
 // BS components
@@ -28,7 +28,7 @@ function App() {
   return (
     <>
     <NavBar itemsInCart={itemsInCart}/>
-      <Container><ItemListContainer greeting="Estamos en construccion!" onAdd = {onAdd} stock ={itemStock}/></Container>
+      <Container fluid><ItemListContainer greeting="Estamos en construccion!" onAdd = {onAdd} stock ={itemStock}/></Container>
     </>
 
 
