@@ -3,9 +3,9 @@ import "./ItemListContainer.css";
 
 // BS components
 import Container from 'react-bootstrap/Container';
+
 import ItemList from "../ItemList/ItemList";
-import Spinner from 'react-bootstrap/Spinner';
-import Row from 'react-bootstrap/Row';
+import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner.js";
 
 import React from "react";
 import { useEffect, useState } from "react";
@@ -42,13 +42,7 @@ const ItemListContainer = (props) => {
 
     return <Container fluid>
         {isLoading &&
-            <div className="spinnerContainer">
-                <Spinner animation="border" role="status" className="spinner">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner>
-                <h1>Cargando productos...</h1>
-            </div>
-
+            <LoadingSpinner />
         }
         {error && <h1>Hubo un error</h1>}
         {!error && <ItemList items={items} />}
