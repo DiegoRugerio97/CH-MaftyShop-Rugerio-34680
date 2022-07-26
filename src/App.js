@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <NavBar itemsInCart={0} />
-      <Container fluid>
+      <Container>
         <ItemListContainer/>
       </Container>
     </>

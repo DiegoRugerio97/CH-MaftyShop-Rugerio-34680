@@ -39,12 +39,13 @@ const ItemListContainer = (props) => {
     }, []);
 
 
-    return <Container>
+    return <Container fluid>
         {isLoading &&
             <Spinner animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
             </Spinner>}
-        <ItemList items={items} />
+        {error && <h1>Hubo un error</h1>}
+        {!error && <ItemList items={items} />}
     </Container>;
 }
 
