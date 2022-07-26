@@ -1,0 +1,11 @@
+.spinner{
+    width: 15rem !important;
+    height: 15rem !important;
+    margin: 5rem auto;
+    display: block !important;
+}
+
+.spinnerContainer{
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+}

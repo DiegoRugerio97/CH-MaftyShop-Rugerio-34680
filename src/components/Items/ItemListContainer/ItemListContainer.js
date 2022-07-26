@@ -5,6 +5,7 @@ import "./ItemListContainer.css";
 import Container from 'react-bootstrap/Container';
 import ItemList from "../ItemList/ItemList";
 import Spinner from 'react-bootstrap/Spinner';
+import Row from 'react-bootstrap/Row';
 
 import React from "react";
 import { useEffect, useState } from "react";
@@ -41,9 +42,14 @@ const ItemListContainer = (props) => {
 
     return <Container fluid>
         {isLoading &&
-            <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </Spinner>}
+            <div className="spinnerContainer">
+                <Spinner animation="border" role="status" className="spinner">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+                <h1>Cargando productos...</h1>
+            </div>
+
+        }
         {error && <h1>Hubo un error</h1>}
         {!error && <ItemList items={items} />}
     </Container>;
