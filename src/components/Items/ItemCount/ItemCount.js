@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 // Styles   
 import "./ItemCount.css";
 
+// <ItemCount stock={props.stock} initial={1} onAdd={props.onAdd} />
 
 const ItemCount = (props) => {
 
