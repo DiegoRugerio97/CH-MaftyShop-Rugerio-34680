@@ -1,19 +1,16 @@
+// ItemListContainer component - Render ItemList component and fetch all products from DB
 // Styling
 import "./ItemListContainer.css";
-
 // BS components
 import Container from 'react-bootstrap/Container';
-
+// Custom components
 import ItemList from "../ItemList/ItemList";
-import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner.js";
-
+import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner";
+// React imports
 import React from "react";
 import { useEffect, useState } from "react";
 
-
-
-
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
 
     const PRODUCTS_URL = "https://mafty-shop-default-rtdb.firebaseio.com/productos.json";
 
@@ -45,7 +42,7 @@ const ItemListContainer = (props) => {
             <LoadingSpinner />
         }
         {error && <h1>Hubo un error</h1>}
-        {!error && <ItemList items={items} />}
+        {!error && <ItemList itemsList={items} />}
     </Container>;
 }
 

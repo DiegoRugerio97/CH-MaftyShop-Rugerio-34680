@@ -1,7 +1,7 @@
+// LoadingSpinner component - Show when state isLoading = true in any other component while fetching
 import Spinner from 'react-bootstrap/Spinner';
-
+// Styling
 import "./LoadingSpinner.css";
-
 
 const LoadingSpinner = props => {
     return <div className="spinnerContainer">
