@@ -7,7 +7,8 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner";
 // BS Imports
 import Container from 'react-bootstrap/Container';
-
+// Styling
+import "./ItemDetailContainer.css";
 
 const ItemDetailContainer = ({ id }) => {
 
@@ -38,7 +39,7 @@ const ItemDetailContainer = ({ id }) => {
     return <>
         <Container fluid>
             {isLoading && <LoadingSpinner text={"Cargando producto..."} />}
-            {!isLoading && !error && <ItemDetail itemName={item.itemName} itemImg={item.itemImg} itemDescription={item.itemDescription} itemStock={item.itemStock} />}
+            {!isLoading && !error && <ItemDetail itemName={item.itemName} itemImg={item.itemImg} itemStock={item.itemStock} itemLongDescription={item.itemLongDescription} itemPrice={item.itemPrice} />}
         </Container>
     </>
 }

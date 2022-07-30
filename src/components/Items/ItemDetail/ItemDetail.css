@@ -1,0 +1,45 @@
+.itemImg {
+  width: 100% !important;
+  object-fit: cover !important;
+  border-radius: 15px;
+}
+
+.itemDetail {
+  padding: 3rem;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.1),
+    rgba(0, 0, 0, 0.1)
+  );
+
+  color: black;
+}
+
+.itemCount {
+  width: 50% !important;
+  margin: 0 auto;
+}
+
+.itemName {
+  font-family: "Oswald", sans-serif;
+  font-size: 3rem;
+  text-align: left;
+}
+
+.itemDescription {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.25rem;
+  text-align: justify;
+}
+
+.itemRow {
+  gap: 2rem;
+  flex-flow: column;
+  justify-content: space-around;
+  padding: 0 1rem;
+}
+
+.itemPrice {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.5rem;
+  text-align: left;
+}
