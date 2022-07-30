@@ -8,6 +8,8 @@ import NavBar from './components/NavBar/NavBar.js';
 import Container from 'react-bootstrap/Container';
 // React imports
 import React from 'react';
+// Testing ItemDetailContainer - TEMP
+import ItemDetailContainer from './components/Items/ItemDetailContainer/ItemDetailContainer';
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
       <NavBar itemsInCart={0} />
       <Container>
         <ItemListContainer/>
+        <ItemDetailContainer id={0}/>
       </Container>
     </>
   );
