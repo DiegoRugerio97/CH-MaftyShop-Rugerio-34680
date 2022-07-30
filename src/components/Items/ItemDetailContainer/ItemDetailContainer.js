@@ -34,7 +34,7 @@ const ItemDetailContainer = ({id}) =>{
     }, [PRODUCT_URL]);
 
     return <>
-        {isLoading && <LoadingSpinner />}
+        {isLoading && <LoadingSpinner text={"Cargando producto..."}/>}
         {!isLoading && !error && <ItemDetail itemName={item.itemName} itemImg={item.itemImg} itemDescription={item.itemDescription} itemStock={item.itemStock}/>}
     </>
 }

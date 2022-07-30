@@ -39,10 +39,10 @@ const ItemListContainer = () => {
 
     return <Container fluid>
         {isLoading &&
-            <LoadingSpinner />
+            <LoadingSpinner text={"Cargando productos..."}/>
         }
         {error && <h1>Hubo un error</h1>}
-        {!error && <ItemList itemsList={items} />}
+        {!isLoading && !error && <ItemList itemsList={items} />}
     </Container>;
 }
 
