@@ -39,7 +39,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
 
     // Updating counter when clicked, if it is at stock's limit, doesn't add
     const onAddItemHandler = () => {
-        if (!isOverStock) {
+        if (isOverStock) {
             return;
         }
         setCounter(prevState => prevState + 1);
