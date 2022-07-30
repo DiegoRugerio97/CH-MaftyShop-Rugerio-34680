@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 // ItemDetail component
 import ItemDetail from "../ItemDetail/ItemDetail";
 import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner";
+// BS Imports
+import Container from 'react-bootstrap/Container';
 
 
-const ItemDetailContainer = ({id}) =>{
+const ItemDetailContainer = ({ id }) => {
 
     const [item, setItem] = useState({});
     const [isLoading, setIsLoading] = useState(false);
@@ -34,8 +36,10 @@ const ItemDetailContainer = ({id}) =>{
     }, [PRODUCT_URL]);
 
     return <>
-        {isLoading && <LoadingSpinner text={"Cargando producto..."}/>}
-        {!isLoading && !error && <ItemDetail itemName={item.itemName} itemImg={item.itemImg} itemDescription={item.itemDescription} itemStock={item.itemStock}/>}
+        <Container fluid>
+            {isLoading && <LoadingSpinner text={"Cargando producto..."} />}
+            {!isLoading && !error && <ItemDetail itemName={item.itemName} itemImg={item.itemImg} itemDescription={item.itemDescription} itemStock={item.itemStock} />}
+        </Container>
     </>
 }
 

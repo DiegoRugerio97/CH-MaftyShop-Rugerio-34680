@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <NavBar itemsInCart={0} />
-      <Container>
+      <Container fluid>
         <ItemListContainer/>
         <ItemDetailContainer id={0}/>
       </Container>

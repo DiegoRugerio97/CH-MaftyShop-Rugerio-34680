@@ -37,7 +37,7 @@ const ItemListContainer = () => {
     }, []);
 
 
-    return <Container fluid>
+    return <Container>
         {isLoading &&
             <LoadingSpinner text={"Cargando productos..."}/>
         }
