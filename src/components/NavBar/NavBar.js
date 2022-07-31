@@ -1,11 +1,10 @@
-
+// NavBar component - Hold all Links and CartWidget component
 // Styling
 import './NavBar.css';
 // Logo image import
 import logo from '../../img/Mafty.png';
 // CartWidget component import
-import CartWidget from '../CartWidget/CartWidget.js';
-
+import CartWidget from '../CartWidget/CartWidget';
 // BS components
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -13,9 +12,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-
-
-const NavBar = (props) => {
+const NavBar = ({itemsInCart}) => {
     // react-BS navbar
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
@@ -48,7 +45,7 @@ const NavBar = (props) => {
                         </InputGroup>
                     </Form>
                     {/* Implementation of CartWidget component with Items in Cart prop */}
-                    <CartWidget cantidadProductos={props.itemsInCart} />
+                    <CartWidget cantidadProductos={itemsInCart} />
                 </Navbar.Collapse>
             </Container>
         </Navbar>

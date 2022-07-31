@@ -1,0 +1,16 @@
+.itemDetailContainer {
+  position: relative;
+}
+
+.backButtonContainer {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  z-index: 10;
+}
+
+.backButton {
+  background-color: transparent;
+  border: none;
+  font-size: 2.5rem;
+}

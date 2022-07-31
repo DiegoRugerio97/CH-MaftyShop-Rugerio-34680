@@ -1,24 +1,30 @@
+// Item Component - Render an individual Item
 // BS imports
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-
+// Styling
 import "./Item.css";
 
+const Item = ({itemImg, itemName, itemDescription, itemStock, itemID,  onDetailClick}) => {
 
-const Item = props => {
+    // Testing ItemDetail component with handlers - TEMPORAL
+    const onDetailClickHandler = () =>{
+        onDetailClick(itemID);
+    }
+
     return (
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={props.itemImg} />
+            <Card.Img variant="top" src={itemImg} />
             <Card.Body>
-                <Card.Title>{props.itemName}</Card.Title>
+                <Card.Title>{itemName}</Card.Title>
                 <Card.Text>
-                    {props.itemDescription}
+                    {itemDescription}
                 </Card.Text>
                 <Card.Text>
-                    Stock del producto: {props.itemStock}
+                    Stock del producto: {itemStock}
                 </Card.Text>
             </Card.Body>
-            <Button className='itemBtn' variant="dark">Detalles del producto</Button>
+            <Button className='itemBtn' onClick ={onDetailClickHandler} variant="dark">Detalles del producto</Button>
         </Card>
     );
 }
