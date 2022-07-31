@@ -11,6 +11,8 @@ import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner";
 import Container from 'react-bootstrap/Container';
 // Styling
 import "./ItemDetailContainer.css";
+// Utility function
+import {getItem} from "../../../util/firebaseFetch";
 
 const ItemDetailContainer = () => {
     // States
@@ -32,10 +34,9 @@ const ItemDetailContainer = () => {
         console.log(err);
     }
 
-    useEffect(() => {
-        const PRODUCT_URL = `https://mafty-shop-default-rtdb.firebaseio.com/productos/${itemID}.json`;
+    useEffect(() => {   
         setIsLoading(true);
-        fetch(PRODUCT_URL).then(response => response.ok ? response.json() : Promise.reject("Error al cargar producto."))
+        getItem("productos",itemID)
             .then(data => loadItem(data))
             .catch(err => loadingFailed(err));
     }, [itemID]);

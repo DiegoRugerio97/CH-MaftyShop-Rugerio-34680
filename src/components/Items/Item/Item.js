@@ -21,7 +21,7 @@ const Item = ({itemImg, itemName, itemDescription, itemStock, itemID}) => {
                     Stock del producto: {itemStock}
                 </Card.Text>
             </Card.Body>
-            <Button className='itemBtn' variant="dark"><Link className='itemLink' to={`/item/${itemID}`}>Detalles del producto</Link> </Button>
+            <Button className='itemBtn' variant="dark"><Link className='itemLink' to={`/item/${itemID}`}>Detalles del producto</Link></Button>
         </Card>
     );
 }
