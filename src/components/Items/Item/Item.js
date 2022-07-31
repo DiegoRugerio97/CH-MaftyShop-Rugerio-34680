@@ -7,7 +7,7 @@ import "./Item.css";
 // React Router imports
 import { Link } from 'react-router-dom';
 
-const Item = ({itemImg, itemName, itemDescription, itemStock, itemID}) => {
+const Item = ({ itemImg, itemName, itemDescription, itemStock, itemID }) => {
 
     return (
         <Card style={{ width: '18rem' }}>
@@ -21,7 +21,7 @@ const Item = ({itemImg, itemName, itemDescription, itemStock, itemID}) => {
                     Stock del producto: {itemStock}
                 </Card.Text>
             </Card.Body>
-            <Button className='itemBtn' variant="dark"><Link className='itemLink' to={`/item/${itemID}`}>Detalles del producto</Link></Button>
+            <Link className='itemLink' to={`/item/${itemID}`}> <Button className='itemBtn' variant="dark">Detalles del producto</Button></Link>
         </Card>
     );
 }
