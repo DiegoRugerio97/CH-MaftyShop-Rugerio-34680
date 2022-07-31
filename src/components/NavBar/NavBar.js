@@ -11,13 +11,15 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+// React Router imports
+import { Link } from 'react-router-dom';
 
-const NavBar = ({itemsInCart}) => {
+const NavBar = ({ itemsInCart }) => {
     // react-BS navbar
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">
+                <Link className='indexLink' to={'/'}> <Navbar.Brand>
                     <img
                         alt=""
                         src={logo}
@@ -27,6 +29,7 @@ const NavBar = ({itemsInCart}) => {
                     />{" "}
                     Mafty Shop
                 </Navbar.Brand>
+                </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">

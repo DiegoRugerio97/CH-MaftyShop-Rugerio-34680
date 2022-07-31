@@ -47,6 +47,10 @@
     gap: 2rem;
 }
 
+.indexLink{
+    text-decoration: none;
+}
+
 @media (min-width: 992px) { 
     .navbar-nav{
         gap: 4rem;
