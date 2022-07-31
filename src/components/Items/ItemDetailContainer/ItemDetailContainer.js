@@ -37,7 +37,10 @@ const ItemDetailContainer = ({ id }) => {
     }, [PRODUCT_URL]);
 
     return <>
-        <Container fluid>
+        <Container fluid className="itemDetailContainer">
+            <div className="backButtonContainer">
+                <button className="backButton"><i className="fa-solid fa-angle-left"/></button>
+            </div>
             {isLoading && <LoadingSpinner text={"Cargando producto..."} />}
             {!isLoading && !error && <ItemDetail itemName={item.itemName} itemImg={item.itemImg} itemStock={item.itemStock} itemLongDescription={item.itemLongDescription} itemPrice={item.itemPrice} />}
         </Container>

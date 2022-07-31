@@ -10,9 +10,6 @@ import "./ItemDetail.css"
 const ItemDetail = ({ itemImg, itemName, itemStock, itemLongDescription, itemPrice }) => {
 
     return <Row className="itemDetail">
-        <div className="backButtonContainer">
-            <button className="backButton"><i className="fa-solid fa-angle-left"></i></button>
-        </div>
         <Col xs={12} md={9} lg={5}>
             <img className="itemImg" src={itemImg} alt="Product" />
         </Col>
