@@ -7,25 +7,18 @@ import NavBar from './components/NavBar/NavBar.js';
 // BS components
 import Container from 'react-bootstrap/Container';
 // React imports
-import React, { useState } from 'react';
+import React from 'react';
 // Testing ItemDetailContainer - TEMP
 import ItemDetailContainer from './components/Items/ItemDetailContainer/ItemDetailContainer';
 
 function App() {
 
-  // Temp function and state to test ItemDetailContainer and ItemDetail
-  const [itemID, setItemID] = useState(0);
-
-  const onDetailClick = id => {
-    setItemID(id);
-  }
-
   return (
     <>
       <NavBar itemsInCart={0} />
       <Container fluid>
-        <ItemListContainer onDetailClick = {onDetailClick}/>
-        <ItemDetailContainer id={itemID}/>
+        <ItemListContainer/>
+        <ItemDetailContainer id={0}/>
       </Container>
     </>
   );

@@ -10,7 +10,7 @@ import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner";
 import React from "react";
 import { useEffect, useState } from "react";
 
-const ItemListContainer = ({onDetailClick}) => {
+const ItemListContainer = () => {
 
     const PRODUCTS_URL = "https://mafty-shop-default-rtdb.firebaseio.com/productos.json";
 
@@ -36,13 +36,12 @@ const ItemListContainer = ({onDetailClick}) => {
             .catch(err => loadingFailed(err));
     }, []);
 
-
     return <Container>
         {isLoading &&
             <LoadingSpinner text={"Cargando productos..."}/>
         }
         {error && <h1>Hubo un error</h1>}
-        {!isLoading && !error && <ItemList itemsList={items} onDetailClick = {onDetailClick}/>}
+        {!isLoading && !error && <ItemList itemsList={items}/>}
     </Container>;
 }
 

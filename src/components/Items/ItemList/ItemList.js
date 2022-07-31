@@ -6,10 +6,10 @@ import "./ItemList.css"
 // BS imports
 import Row from 'react-bootstrap/Row';
 
-const ItemList = ({itemsList, onDetailClick}) => {
+const ItemList = ({itemsList}) => {
 
     const items = itemsList.map(
-        item => <Item key={item.id} itemID = {item.id} itemName={item.itemName} itemImg={item.itemImg} itemDescription={item.itemDescription} itemStock={item.itemStock} onDetailClick ={onDetailClick}/>);
+        item => <Item key={item.id} itemID = {item.id} itemName={item.itemName} itemImg={item.itemImg} itemDescription={item.itemDescription} itemStock={item.itemStock}/>);
     return (
         <Row className="itemsContainer">
             {items}

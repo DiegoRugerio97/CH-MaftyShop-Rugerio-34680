@@ -5,12 +5,7 @@ import Button from 'react-bootstrap/Button';
 // Styling
 import "./Item.css";
 
-const Item = ({itemImg, itemName, itemDescription, itemStock, itemID,  onDetailClick}) => {
-
-    // Testing ItemDetail component with handlers - TEMPORAL
-    const onDetailClickHandler = () =>{
-        onDetailClick(itemID);
-    }
+const Item = ({itemImg, itemName, itemDescription, itemStock, itemID}) => {
 
     return (
         <Card style={{ width: '18rem' }}>
@@ -24,7 +19,7 @@ const Item = ({itemImg, itemName, itemDescription, itemStock, itemID,  onDetailC
                     Stock del producto: {itemStock}
                 </Card.Text>
             </Card.Body>
-            <Button className='itemBtn' onClick ={onDetailClickHandler} variant="dark">Detalles del producto</Button>
+            <Button className='itemBtn' variant="dark">Detalles del producto</Button>
         </Card>
     );
 }
