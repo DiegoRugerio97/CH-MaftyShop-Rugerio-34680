@@ -21,7 +21,7 @@ const ItemDetail = ({ itemImg, itemName, itemStock, itemLongDescription, itemPri
                     <p className="itemDescription">{itemLongDescription}</p>
                 </div>
                 <div className="itemCount">
-                    <ItemCount initial={1} stock={itemStock} />
+                    <ItemCount initial={1} stock={itemStock} onAdd={console.log} />
                 </div>
             </Row>
         </Col>
