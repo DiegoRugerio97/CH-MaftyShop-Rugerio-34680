@@ -14,3 +14,11 @@
   border: none;
   font-size: 2.5rem;
 }
+
+.backLink{
+  color: black;
+}
+
+.backLink:hover{
+  color: rgb(107, 107, 107);
+}

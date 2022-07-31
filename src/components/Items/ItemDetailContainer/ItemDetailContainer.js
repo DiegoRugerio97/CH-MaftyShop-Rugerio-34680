@@ -2,6 +2,8 @@
 // React Imports
 import React from "react";
 import { useEffect, useState } from "react";
+// React router imports
+import {Link} from 'react-router-dom';
 // ItemDetail component
 import ItemDetail from "../ItemDetail/ItemDetail";
 import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner";
@@ -39,7 +41,9 @@ const ItemDetailContainer = ({ id }) => {
     return <>
         <Container fluid className="itemDetailContainer">
             <div className="backButtonContainer">
-                <button className="backButton"><i className="fa-solid fa-angle-left"/></button>
+                <button className="backButton">
+                    <Link className="backLink" to = {'/'}> <i className="fa-solid fa-angle-left"/></Link>
+                </button>
             </div>
             {isLoading && <LoadingSpinner text={"Cargando producto..."} />}
             {!isLoading && !error && <ItemDetail itemName={item.itemName} itemImg={item.itemImg} itemStock={item.itemStock} itemLongDescription={item.itemLongDescription} itemPrice={item.itemPrice} />}

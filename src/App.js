@@ -10,17 +10,20 @@ import Container from 'react-bootstrap/Container';
 import React from 'react';
 // Testing ItemDetailContainer - TEMP
 import ItemDetailContainer from './components/Items/ItemDetailContainer/ItemDetailContainer';
+// Router imports
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
 
   return (
-    <>
+    <BrowserRouter>
       <NavBar itemsInCart={0} />
       <Container fluid>
-        <ItemListContainer/>
-        <ItemDetailContainer id={0}/>
+        <Routes>
+          <Route path="/" element={ <ItemListContainer />} />
+        </Routes>
       </Container>
-    </>
+    </BrowserRouter>
   );
 }
 
