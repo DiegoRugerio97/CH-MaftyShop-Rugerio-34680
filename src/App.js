@@ -21,6 +21,7 @@ function App() {
       <Container fluid>
         <Routes>
           <Route path="/" element={ <ItemListContainer />} />
+          <Route path ="item/:itemID" element = {<ItemDetailContainer/>}/>
         </Routes>
       </Container>
     </BrowserRouter>

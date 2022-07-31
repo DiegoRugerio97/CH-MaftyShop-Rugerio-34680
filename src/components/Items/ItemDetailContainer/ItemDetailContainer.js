@@ -3,7 +3,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 // React router imports
-import {Link} from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 // ItemDetail component
 import ItemDetail from "../ItemDetail/ItemDetail";
 import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner";
@@ -12,13 +12,14 @@ import Container from 'react-bootstrap/Container';
 // Styling
 import "./ItemDetailContainer.css";
 
-const ItemDetailContainer = ({ id }) => {
-
+const ItemDetailContainer = () => {
+    // States
     const [item, setItem] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    let PRODUCT_URL = `https://mafty-shop-default-rtdb.firebaseio.com/productos/${id}.json`;
+    // Router
+    const { itemID } = useParams();
 
     const loadItem = (data) => {
         setItem(data);
@@ -32,17 +33,18 @@ const ItemDetailContainer = ({ id }) => {
     }
 
     useEffect(() => {
+        const PRODUCT_URL = `https://mafty-shop-default-rtdb.firebaseio.com/productos/${itemID}.json`;
         setIsLoading(true);
         fetch(PRODUCT_URL).then(response => response.ok ? response.json() : Promise.reject("Error al cargar producto."))
             .then(data => loadItem(data))
             .catch(err => loadingFailed(err));
-    }, [PRODUCT_URL]);
+    }, [itemID]);
 
     return <>
         <Container fluid className="itemDetailContainer">
             <div className="backButtonContainer">
                 <button className="backButton">
-                    <Link className="backLink" to = {'/'}> <i className="fa-solid fa-angle-left"/></Link>
+                    <Link className="backLink" to={'/'}> <i className="fa-solid fa-angle-left" /></Link>
                 </button>
             </div>
             {isLoading && <LoadingSpinner text={"Cargando producto..."} />}
