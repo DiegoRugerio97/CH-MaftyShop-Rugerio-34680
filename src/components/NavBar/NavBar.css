@@ -18,14 +18,17 @@
     align-items: center;
 }
 
-
-.nav-link{
+.categoryLink{
     color: rgb(199, 199, 199) !important;
     font-size: 1.5rem !important;
-    font-family: 'Oswald', sans-serif;  
+    font-family: 'Oswald', sans-serif; 
+    text-decoration: none;
+    display: block;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    padding: 0.75rem;
 }
 
-.nav-link:hover{
+.categoryLink:hover{
     color: rgb(255, 255, 255) !important;
 }
 

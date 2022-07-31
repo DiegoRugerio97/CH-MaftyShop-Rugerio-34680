@@ -33,10 +33,10 @@ const NavBar = ({ itemsInCart }) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">¿Quiénes somos?</Nav.Link>
-                        <Nav.Link href="#link">Figuras</Nav.Link>
-                        <Nav.Link href="#link">Gundam</Nav.Link>
-                        <Nav.Link href="#link">Manga</Nav.Link>
+                        <Link className='categoryLink' to={'/category/gunpla'}>¿Quiénes somos?</Link>
+                        <Link className='categoryLink' to={'/category/gunpla'}>Gundam</Link>
+                        <Link className='categoryLink' to={'/category/figures'}>Figuras</Link>
+                        <Link className='categoryLink' to={'/category/manga'}>Manga</Link>
                     </Nav>
                     <Form className="d-flex">
                         <InputGroup className='d-flex'>

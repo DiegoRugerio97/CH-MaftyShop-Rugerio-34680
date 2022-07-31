@@ -2,8 +2,9 @@
 
 const FIREBASE_URL = "https://mafty-shop-default-rtdb.firebaseio.com";
 
-export const getItems = (category) =>{
-
+export const getItems = () =>{
+    const itemsPromise = fetch(`${FIREBASE_URL}/productos.json`).then(response => response.ok ? response.json() : Promise.reject("Error al cargar datos."));
+    return itemsPromise;
 }
 
 export const getItem = (category,itemID) =>{

@@ -9,19 +9,20 @@ import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner";
 // React imports
 import React from "react";
 import { useEffect, useState } from "react";
+// Routing imports
+import { useParams } from "react-router-dom";
+// Utility function
+import { getItems } from "../../../util/firebaseFetch";
+
 
 const ItemListContainer = () => {
-
-    const PRODUCTS_URL = "https://mafty-shop-default-rtdb.firebaseio.com/productos.json";
 
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    const loadItems = (data) => {
-        setItems(data);
-        setIsLoading(false);
-    }
+    // Routing
+    const { categoryName } = useParams();
 
     const loadingFailed = (err) => {
         setIsLoading(false);
@@ -31,17 +32,27 @@ const ItemListContainer = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(PRODUCTS_URL).then(response => response.ok ? response.json() : Promise.reject("Error al cargar datos."))
-            .then(data => loadItems(data))
+        getItems()
+            .then(data => {
+                if (categoryName) {
+                    const filteredItems = data.filter((item) => item.itemCategory === categoryName);
+                    setItems(filteredItems);
+                }
+                else{
+                    setItems(data);
+                }
+                setIsLoading(false);
+            })
             .catch(err => loadingFailed(err));
-    }, []);
+
+    }, [categoryName]);
 
     return <Container>
         {isLoading &&
-            <LoadingSpinner text={"Cargando productos..."}/>
+            <LoadingSpinner text={"Cargando productos..."} />
         }
         {error && <h1>Hubo un error</h1>}
-        {!isLoading && !error && <ItemList itemsList={items}/>}
+        {!isLoading && !error && <ItemList itemsList={items} />}
     </Container>;
 }
 
