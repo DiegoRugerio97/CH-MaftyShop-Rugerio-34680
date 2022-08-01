@@ -33,7 +33,7 @@ const NavBar = ({ itemsInCart }) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Link className='categoryLink' to={'/category/gunpla'}>¿Quiénes somos?</Link>
+                        <Link className='categoryLink' to={'/aboutUs'}>¿Quiénes somos?</Link>
                         <Link className='categoryLink' to={'/category/gunpla'}>Gundam</Link>
                         <Link className='categoryLink' to={'/category/figures'}>Figuras</Link>
                         <Link className='categoryLink' to={'/category/manga'}>Manga</Link>
@@ -48,7 +48,9 @@ const NavBar = ({ itemsInCart }) => {
                         </InputGroup>
                     </Form>
                     {/* Implementation of CartWidget component with Items in Cart prop */}
-                    <CartWidget cantidadProductos={itemsInCart} />
+                    <Link className='indexLink' to={'/cart'}>
+                        <CartWidget cantidadProductos={itemsInCart} />
+                    </Link>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
