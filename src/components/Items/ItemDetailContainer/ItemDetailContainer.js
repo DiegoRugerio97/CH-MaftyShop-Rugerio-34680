@@ -41,11 +41,13 @@ const ItemDetailContainer = () => {
             .catch(err => loadingFailed(err));
     }, [itemID]);
 
+    const backButtonLink = `/category/${item.itemCategory}`;
+
     return <>
         <Container fluid className="itemDetailContainer">
             <div className="backButtonContainer">
                 <button className="backButton">
-                    <Link className="backLink" to={'/'}> <i className="fa-solid fa-angle-left" /></Link>
+                    <Link className="backLink" to={backButtonLink}> <i className="fa-solid fa-angle-left" /></Link>
                 </button>
             </div>
             {isLoading && <LoadingSpinner text={"Cargando producto..."} />}
