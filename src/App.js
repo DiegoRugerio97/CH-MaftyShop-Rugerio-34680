@@ -23,6 +23,8 @@ function App() {
       <Container fluid>
         <Routes>
           <Route path="/" element={ <ItemListContainer />} />
+          {/* For GH pages */}
+          <Route path= "CH-MaftyShop-Rugerio-34680" element={ <ItemListContainer />} />
           <Route path ="item/:itemID" element = {<ItemDetailContainer/>}/>
           <Route path ="category/:categoryName" element = {<ItemListContainer/>}/>
           <Route path ="aboutUs" element = {<AboutUs/>}/>
