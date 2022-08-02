@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/CH-MaftyShop-Rugerio-34680/static/css/main.f7f09b18.css",
-    "main.js": "/CH-MaftyShop-Rugerio-34680/static/js/main.557553c9.js",
+    "main.js": "/CH-MaftyShop-Rugerio-34680/static/js/main.1f66ad9a.js",
     "static/media/Mafty.png": "/CH-MaftyShop-Rugerio-34680/static/media/Mafty.b6565b50071907316450.png",
     "index.html": "/CH-MaftyShop-Rugerio-34680/index.html",
     "main.f7f09b18.css.map": "/CH-MaftyShop-Rugerio-34680/static/css/main.f7f09b18.css.map",
-    "main.557553c9.js.map": "/CH-MaftyShop-Rugerio-34680/static/js/main.557553c9.js.map"
+    "main.1f66ad9a.js.map": "/CH-MaftyShop-Rugerio-34680/static/js/main.1f66ad9a.js.map"
   },
   "entrypoints": [
     "static/css/main.f7f09b18.css",
-    "static/js/main.557553c9.js"
+    "static/js/main.1f66ad9a.js"
   ]
 }
