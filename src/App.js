@@ -18,7 +18,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
 
   return (
-    <BrowserRouter basename='/'>
+    <BrowserRouter>
       <NavBar itemsInCart={0} />
       <Container fluid>
         <Routes>
