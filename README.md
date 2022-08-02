@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Proyecto del Curso ReactJS CoderHouse
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+En este repositorio se encuentre el código fuente del proyecto de ReactJS de CoderHouse, comisión 34680.
 
-## Available Scripts
+## Objetivo
+El objetivo de esta webapp es la de simular un ecommerce de artículos de cultura popular japonesa, tales como:
+* Modelos de plástico del anime Gundam.
+* Manga.
+* Figuras a escala de personajes de anime.
 
-In the project directory, you can run:
+Durante el desarrollo de esta webapp de ecommerce se practicaron los conceptos fundamentales de React como es el diseño basado en componentes y la reutilización de estos.
 
-### `npm start`
+## Desarrollo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+La webapp fue desarrollada utilizando el framework de JS, ReactJS.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Los temas vistos en el curso y aplicados en el desarrollo de la webapp son los siguientes:
 
-### `npm test`
+* JSX.
+* Diseño basado en componentes.
+* Componentes Funcionales.
+* Separación de responsabilidades por medio de componentes lógicos y de presentación.
+* Uso de Hooks, useState, useEffect de React.
+* Llamadas asincrónicas por medio de fetch().
+* Navegación de la aplicación utilizando BrowerRouter, Routes, Route y hook useParams de la librería react-router-dom.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Librerías**
 
-### `npm run build`
+React Bootstrap
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Aparte de las dependencias vistas en clase, react y react router dom, decidí agregar a mi proyecto la librería react-bootstrap para el apartado visual de la aplicación, debido a su fácil implementación y los estilos responsive que este framework ofrece.
