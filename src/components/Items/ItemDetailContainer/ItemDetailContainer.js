@@ -2,6 +2,8 @@
 // React Imports
 import React from "react";
 import { useEffect, useState } from "react";
+// React router imports
+import { Link, useParams } from 'react-router-dom';
 // ItemDetail component
 import ItemDetail from "../ItemDetail/ItemDetail";
 import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner";
@@ -9,14 +11,17 @@ import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner";
 import Container from 'react-bootstrap/Container';
 // Styling
 import "./ItemDetailContainer.css";
+// Utility function
+import {getItem} from "../../../util/firebaseFetch";
 
-const ItemDetailContainer = ({ id }) => {
-
+const ItemDetailContainer = () => {
+    // States
     const [item, setItem] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    let PRODUCT_URL = `https://mafty-shop-default-rtdb.firebaseio.com/productos/${id}.json`;
+    // Router
+    const { itemID } = useParams();
 
     const loadItem = (data) => {
         setItem(data);
@@ -29,17 +34,21 @@ const ItemDetailContainer = ({ id }) => {
         console.log(err);
     }
 
-    useEffect(() => {
+    useEffect(() => {   
         setIsLoading(true);
-        fetch(PRODUCT_URL).then(response => response.ok ? response.json() : Promise.reject("Error al cargar producto."))
+        getItem("productos",itemID)
             .then(data => loadItem(data))
             .catch(err => loadingFailed(err));
-    }, [PRODUCT_URL]);
+    }, [itemID]);
+
+    const backButtonLink = `/category/${item.itemCategory}`;
 
     return <>
         <Container fluid className="itemDetailContainer">
             <div className="backButtonContainer">
-                <button className="backButton"><i className="fa-solid fa-angle-left"/></button>
+                <button className="backButton">
+                    <Link className="backLink" to={backButtonLink}> <i className="fa-solid fa-angle-left" /></Link>
+                </button>
             </div>
             {isLoading && <LoadingSpinner text={"Cargando producto..."} />}
             {!isLoading && !error && <ItemDetail itemName={item.itemName} itemImg={item.itemImg} itemStock={item.itemStock} itemLongDescription={item.itemLongDescription} itemPrice={item.itemPrice} />}

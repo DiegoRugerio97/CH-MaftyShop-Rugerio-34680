@@ -1,23 +1,43 @@
-.card-img-top{
-    width: 100% !important;
-    object-fit: cover !important;
+.card-img-top {
+  width: 100% !important;
+  object-fit: cover !important;
+  height: 22.5rem;
+}
+
+.card {
+  padding: 0rem !important;
+  font-family: "Oswald", sans-serif;
+}
+
+.card-title {
+  font-size: 1.25rem !important;
+}
+
+.itemBtn {
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  font-size: 1.15rem !important;
+  width: 100%;
+}
+
+.itemStock {
+  font-weight: bold !important;
+}
+
+.itemLink {
+  color: white;
+  text-decoration: none;
+}
+
+.itemLink:hover {
+  color: white;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .card{
-    padding: 0rem !important;
-    font-family: 'Oswald', sans-serif;
-}
-
-.card-title{
-    font-size: 1.25rem !important;
-}
-
-.itemBtn{
-    border-top-left-radius: 0px !important;
-    border-top-right-radius: 0px !important;
-    font-size: 1.15rem !important;
-}
-
-.itemStock{
-    font-weight: bold !important;
+  animation: fadein 0.25s;
 }
