@@ -1,6 +1,7 @@
 // ItemDetail components, holds more information about product and also ItemCount component for specific product.
 // ItemCount component
 import ItemCount from "../ItemCount/ItemCount";
+import FinishBrowsingButton from "../FinishBrowsingButton/FinishBrowsingButton";
 // BS imports
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -15,7 +16,6 @@ const ItemDetail = ({ itemImg, itemName, itemStock, itemLongDescription, itemPri
 
     const addItemQuantity = (quantity) =>{
         setQuantityToAdd(quantity);
-        console.log(quantityToAdd);
     }
 
     return <Row className="itemDetail">
@@ -30,7 +30,7 @@ const ItemDetail = ({ itemImg, itemName, itemStock, itemLongDescription, itemPri
                     <p className="itemDescription">{itemLongDescription}</p>
                 </div>
                 <div className="itemCount">
-                    <ItemCount initial={1} stock={itemStock} onAdd={addItemQuantity} />
+                    {quantityToAdd ? <FinishBrowsingButton/> : <ItemCount initial={1} stock={itemStock} onAdd={addItemQuantity} />}
                 </div>
             </Row>
         </Col>
