@@ -15,6 +15,7 @@ const ItemDetail = ({ itemImg, itemName, itemStock, itemLongDescription, itemPri
 
     const addItemQuantity = (quantity) =>{
         setQuantityToAdd(quantity);
+        console.log(quantityToAdd);
     }
 
     return <Row className="itemDetail">
