@@ -1,11 +1,18 @@
 .finishButton {
     font-family: "Oswald", sans-serif;
     padding: 4px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     border: 1px solid white;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.9);
     backdrop-filter: saturate(180%) blur(20px);
     color: #fff;
     width: 100%;
+    animation: fadein 0.5s;
 }
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  
