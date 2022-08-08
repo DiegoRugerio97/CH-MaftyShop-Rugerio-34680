@@ -7,7 +7,8 @@ import NavBar from './components/NavBar/NavBar.js';
 import ItemDetailContainer from './components/Items/ItemDetailContainer/ItemDetailContainer';
 import AboutUs from './components/AboutUs/AboutUs';
 import Cart from './components/Cart/Cart';
-
+// Custom Context Provider
+import CartProvider from './context/CartContext';
 // BS components
 import Container from 'react-bootstrap/Container';
 // React imports
@@ -19,16 +20,18 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar itemsInCart={0} />
-      <Container fluid>
-        <Routes>
-          <Route path="/" element={ <ItemListContainer />} />
-          <Route path ="item/:itemID" element = {<ItemDetailContainer/>}/>
-          <Route path ="category/:categoryName" element = {<ItemListContainer/>}/>
-          <Route path ="aboutUs" element = {<AboutUs/>}/>
-          <Route path ="cart" element = {<Cart/>}/>
-        </Routes>
-      </Container>
+      <CartProvider>
+        <NavBar/>
+        <Container fluid>
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route path="item/:itemID" element={<ItemDetailContainer />} />
+            <Route path="category/:categoryName" element={<ItemListContainer />} />
+            <Route path="aboutUs" element={<AboutUs />} />
+            <Route path="cart" element={<Cart />} />
+          </Routes>
+        </Container>
+      </CartProvider>
     </BrowserRouter>
   );
 }

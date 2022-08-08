@@ -51,7 +51,7 @@ const ItemDetailContainer = () => {
                 </button>
             </div>
             {isLoading && <LoadingSpinner text={"Cargando producto..."} />}
-            {!isLoading && !error && <ItemDetail itemName={item.itemName} itemImg={item.itemImg} itemStock={item.itemStock} itemLongDescription={item.itemLongDescription} itemPrice={item.itemPrice} />}
+            {!isLoading && !error && <ItemDetail itemID = {itemID} itemName={item.itemName} itemImg={item.itemImg} itemStock={item.itemStock} itemLongDescription={item.itemLongDescription} itemPrice={item.itemPrice} />}
         </Container>
     </>
 }
