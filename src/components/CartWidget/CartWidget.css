@@ -1,3 +1,17 @@
 .btn-dark{
     border-color: rgb(61, 61, 61);
 }
+
+.cartAnimation{
+    animation: pulse 0.2s linear;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(.9);
+    }
+
+    100% {
+        transform: scale(1.15);
+    }
+}
