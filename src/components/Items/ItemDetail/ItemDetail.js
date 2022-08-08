@@ -8,14 +8,20 @@ import Col from 'react-bootstrap/Col';
 // Styling
 import "./ItemDetail.css"
 // React Imports
-import { useState } from "react";
+import { useContext, useState } from "react";
+// Context
+import { CartContext } from "../../../context/CartContext";
 
-const ItemDetail = ({ itemImg, itemName, itemStock, itemLongDescription, itemPrice }) => {
+const ItemDetail = ({itemID, itemImg, itemName, itemStock, itemLongDescription, itemPrice }) => {
 
+    // State
     const [quantityToAdd, setQuantityToAdd] = useState();
+    // Context
+    const {addToCart} = useContext(CartContext);
 
     const addItemQuantity = (quantity) =>{
         setQuantityToAdd(quantity);
+        addToCart(itemID, quantity, itemName, itemImg, itemPrice);
     }
 
     return <Row className="itemDetail">

@@ -14,7 +14,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 // React Router imports
 import { Link } from 'react-router-dom';
 
-const NavBar = ({ itemsInCart }) => {
+const NavBar = () => {
     // react-BS navbar
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
@@ -49,7 +49,7 @@ const NavBar = ({ itemsInCart }) => {
                     </Form>
                     {/* Implementation of CartWidget component with Items in Cart prop */}
                     <Link className='indexLink' to={'/cart'}>
-                        <CartWidget cantidadProductos={itemsInCart} />
+                        <CartWidget/>
                     </Link>
                 </Navbar.Collapse>
             </Container>

@@ -21,7 +21,7 @@ function App() {
   return (
     <BrowserRouter>
       <CartProvider>
-        <NavBar itemsInCart={0} />
+        <NavBar/>
         <Container fluid>
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
