@@ -15,7 +15,7 @@ import CartItem from "./CartItem/CartItem";
 
 const Cart = () => {
 
-    const { cart, cleanCart, removeFromCart } = useContext(CartContext);
+    const { cart } = useContext(CartContext);
 
     const itemRows = cart.map(itemInCart => {
         return <CartItem key={itemInCart.itemID} itemImg={itemInCart.itemImg} itemName={itemInCart.itemName} itemPrice={itemInCart.itemPrice} quantity={itemInCart.quantity} itemTotal={itemInCart.itemTotal} />
