@@ -22,7 +22,7 @@ const CartProvider = ({children}) =>{
             const updatedCart = cart;
             const cartIndex = findItemIndex(itemID);
             updatedCart[cartIndex].quantity += quantity;
-            updatedCart[cartIndex].itemTotal = parseFloat(itemPrice) * updatedCart[cartIndex].quantity;
+            updatedCart[cartIndex].itemTotal += parseFloat(itemPrice) * quantity;
             setCart(updatedCart);
         }
         else{
@@ -39,7 +39,13 @@ const CartProvider = ({children}) =>{
         return cart.findIndex(item => item.itemID === id);
     }
 
-    return <CartContext.Provider value={{cart, cartQuantity: cart.length, isInCart, cleanCart, addToCart, removeFromCart}}>
+    const calculateTotalItems = () =>{
+        const INITIAL_VALUE = 0;
+        const cartQuantities = cart.map((item) => item.quantity);
+        return cartQuantities.reduce((previousValue, currentValue) => previousValue + currentValue, INITIAL_VALUE);
+    }
+
+    return <CartContext.Provider value={{cart, cartQuantity: calculateTotalItems(), isInCart, cleanCart, addToCart, removeFromCart}}>
         {children}
     </CartContext.Provider>
 
