@@ -22,6 +22,7 @@ const CartProvider = ({children}) =>{
             const updatedCart = cart;
             const cartIndex = findItemIndex(itemID);
             updatedCart[cartIndex].quantity += quantity;
+            updatedCart[cartIndex].itemTotal = parseFloat(itemPrice) * updatedCart[cartIndex].quantity;
             setCart(updatedCart);
         }
         else{
