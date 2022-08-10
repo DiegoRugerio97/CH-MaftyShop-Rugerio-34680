@@ -3,6 +3,7 @@
 import Table from 'react-bootstrap/Table';
 // Component Imports
 import CartItem from "../CartItem/CartItem";
+import ClearCartButton from "../ClearCartButton/ClearCartButton";
 // Styling
 import "./CartTable.css"
 
@@ -36,7 +37,7 @@ const CartTable = ({ cart, cartTotal, cartQuantity}) => {
                 <th></th>
                 <th>{cartQuantity}</th>
                 <th>{formatedTotal}</th>
-                <th></th>
+                <th className='cartItemContainer'><ClearCartButton /></th>
             </tr>
         </Table>
     </>
