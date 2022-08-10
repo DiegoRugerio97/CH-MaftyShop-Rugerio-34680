@@ -3,6 +3,8 @@
 import Table from 'react-bootstrap/Table';
 // Component Imports
 import CartItem from "../CartItem/CartItem";
+// Styling
+import "./CartTable.css"
 
 const CartTable = ({ cart, cartTotal, cartQuantity}) => {
 
@@ -11,8 +13,10 @@ const CartTable = ({ cart, cartTotal, cartQuantity}) => {
     }
     );
 
+    const formatedTotal = Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN'}).format(cartTotal);
+
     return <>
-        <Table bordered hover size="sm">
+        <Table className='cartTable' bordered hover responsive>
             <thead>
                 <tr>
                     <th>Producto</th>
@@ -29,9 +33,9 @@ const CartTable = ({ cart, cartTotal, cartQuantity}) => {
             <tr>
                 <th>Total</th>
                 <th> </th>
-                <th>   </th>
+                <th></th>
                 <th>{cartQuantity}</th>
-                <th>{cartTotal}</th>
+                <th>{formatedTotal}</th>
                 <th></th>
             </tr>
         </Table>

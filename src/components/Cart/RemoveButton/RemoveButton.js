@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import { useContext } from 'react';
 // CartContext import
 import { CartContext } from '../../../context/CartContext';
+// Styling
+import "./RemoveButton.css";
 
 
 const RemoveButton = ({removeID}) => {
@@ -16,7 +18,7 @@ const RemoveButton = ({removeID}) => {
     }
 
      return <>
-         <Button onClick={clickHandler} variant="danger"><i className="fa-solid fa-xmark"/></Button>
+         <Button className="removeButton" onClick={clickHandler} variant="danger"><i className="fa-solid fa-xmark"/></Button>
      </> 
     }
 
