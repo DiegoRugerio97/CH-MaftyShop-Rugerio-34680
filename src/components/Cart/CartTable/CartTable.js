@@ -7,7 +7,7 @@ import CartItem from "../CartItem/CartItem";
 const CartTable = ({ cart }) => {
 
     const itemRows = cart.map(itemInCart => {
-        return <CartItem key={itemInCart.itemID} itemImg={itemInCart.itemImg} itemName={itemInCart.itemName} itemPrice={itemInCart.itemPrice} quantity={itemInCart.quantity} itemTotal={itemInCart.itemTotal} />
+        return <CartItem key={itemInCart.itemID} itemID={itemInCart.itemID} itemImg={itemInCart.itemImg} itemName={itemInCart.itemName} itemPrice={itemInCart.itemPrice} quantity={itemInCart.quantity} itemTotal={itemInCart.itemTotal} />
     }
     );
 
@@ -20,6 +20,7 @@ const CartTable = ({ cart }) => {
                     <th>Precio Unitario</th>
                     <th>Cantidad</th>
                     <th>Total</th>
+                    <th>Eliminar producto</th>
                 </tr>
             </thead>
             <tbody>

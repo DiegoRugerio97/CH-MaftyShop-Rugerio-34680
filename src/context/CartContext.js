@@ -33,8 +33,9 @@ const CartProvider = ({ children }) => {
     };
 
     const removeFromCart = (id) => {
-        const filteredCart = cart.filter(item => item.id !== id);
-        setCart(filteredCart);
+        const updatedCart = cart;
+        const filteredCart = updatedCart.filter(item => item.itemID !== id);
+        setCart([...filteredCart]);
     };
     // Helper functions
     const findItemIndex = id => {
