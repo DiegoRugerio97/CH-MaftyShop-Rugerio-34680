@@ -7,36 +7,18 @@ import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
 // BS imports
 import Container from 'react-bootstrap/Container';
-import Table from 'react-bootstrap/Table';
-// Components 
-import CartItem from "./CartItem/CartItem";
-
+import CartTable from "./CartTable/CartTable";
 
 
 const Cart = () => {
 
     const { cart } = useContext(CartContext);
 
-    const itemRows = cart.map(itemInCart => {
-        return <CartItem key={itemInCart.itemID} itemImg={itemInCart.itemImg} itemName={itemInCart.itemName} itemPrice={itemInCart.itemPrice} quantity={itemInCart.quantity} itemTotal={itemInCart.itemTotal} />
-    }
-    );
+    const cartIsEmpty = cart.length === 0;
 
     return <Container>
-        <Table bordered hover size="sm">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Nombre</th>
-                    <th>Precio Unitario</th>
-                    <th>Cantidad</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-            {itemRows}
-            </tbody>
-        </Table>
+        {!cartIsEmpty && <CartTable cart={cart} />}
+        {cartIsEmpty && <h1>Sin Carrito</h1>}
     </Container>
 
 }
