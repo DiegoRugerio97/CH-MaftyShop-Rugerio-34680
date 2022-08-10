@@ -12,12 +12,12 @@ import CartTable from "./CartTable/CartTable";
 
 const Cart = () => {
 
-    const { cart } = useContext(CartContext);
+    const { cart, cartTotal, cartQuantity } = useContext(CartContext);
 
     const cartIsEmpty = cart.length === 0;
 
     return <Container>
-        {!cartIsEmpty && <CartTable cart={cart} />}
+        {!cartIsEmpty && <CartTable cart={cart} cartTotal = {cartTotal} cartQuantity = {cartQuantity}/>}
         {cartIsEmpty && <h1>Sin Carrito</h1>}
     </Container>
 

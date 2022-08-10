@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 // Component Imports
 import CartItem from "../CartItem/CartItem";
 
-const CartTable = ({ cart }) => {
+const CartTable = ({ cart, cartTotal, cartQuantity}) => {
 
     const itemRows = cart.map(itemInCart => {
         return <CartItem key={itemInCart.itemID} itemID={itemInCart.itemID} itemImg={itemInCart.itemImg} itemName={itemInCart.itemName} itemPrice={itemInCart.itemPrice} quantity={itemInCart.quantity} itemTotal={itemInCart.itemTotal} />
@@ -26,6 +26,14 @@ const CartTable = ({ cart }) => {
             <tbody>
                 {itemRows}
             </tbody>
+            <tr>
+                <th>Total</th>
+                <th> </th>
+                <th>   </th>
+                <th>{cartQuantity}</th>
+                <th>{cartTotal}</th>
+                <th></th>
+            </tr>
         </Table>
     </>
 }
