@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 // Styling
 import "./ItemDetail.css"
 // React Imports
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 // Context
 import { CartContext } from "../../../context/CartContext";
 
@@ -16,8 +16,17 @@ const ItemDetail = ({itemID, itemImg, itemName, itemStock, itemLongDescription, 
 
     // State
     const [quantityToAdd, setQuantityToAdd] = useState();
+    const [updatedStock, setUpdatedStock] = useState(itemStock);
     // Context
-    const {addToCart} = useContext(CartContext);
+    const {addToCart, findItemQuantity} = useContext(CartContext);
+    // 
+
+    // Effect
+    useEffect(()=>{
+        const stockInCart = findItemQuantity(itemID);
+        setUpdatedStock(itemStock - stockInCart);
+    },[findItemQuantity, itemID, itemStock]);
+
 
     const addItemQuantity = (quantity) =>{
         setQuantityToAdd(quantity);
@@ -36,7 +45,7 @@ const ItemDetail = ({itemID, itemImg, itemName, itemStock, itemLongDescription, 
                     <p className="itemDescription">{itemLongDescription}</p>
                 </div>
                 <div className="itemCount">
-                    {quantityToAdd ? <FinishBrowsingButton/> : <ItemCount initial={1} stock={itemStock} onAdd={addItemQuantity} />}
+                    {quantityToAdd ? <FinishBrowsingButton/> : <ItemCount initial={1} stock={updatedStock} onAdd={addItemQuantity} />}
                 </div>
             </Row>
         </Col>

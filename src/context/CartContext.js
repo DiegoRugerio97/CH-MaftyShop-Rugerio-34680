@@ -42,20 +42,30 @@ const CartProvider = ({ children }) => {
         return cart.findIndex(item => item.itemID === id);
     }
 
-    const calculateCartItems = () =>{
+    const calculateCartItems = () => {
         const cartQuantities = cart.map((item) => item.quantity);
         const ZERO = 0;
         return cartQuantities.reduce((previousValue, currentValue) => previousValue + currentValue, ZERO);
     }
 
-    const calculateCartTotal = () =>{
+    const calculateCartTotal = () => {
         const cartTotals = cart.map((item) => item.itemTotal);
         const ZERO = 0;
-        return cartTotals.reduce((previousValue, currentValue)=>previousValue + currentValue, ZERO)
+        return cartTotals.reduce((previousValue, currentValue) => previousValue + currentValue, ZERO)
+    }
+
+    const findItemQuantity = (itemID) => {
+        const itemInCart = isInCart(itemID);
+        if (itemInCart) {
+            const cartItem = cart.find(item => item.itemID === itemID);
+            return cartItem.quantity;
+        }
+        return 0;
+
     }
 
     return <CartContext.Provider value={{
-        cart, cartQuantity: calculateCartItems(), cartTotal : calculateCartTotal(), isInCart, cleanCart, addToCart, removeFromCart
+        cart, cartQuantity: calculateCartItems(), cartTotal: calculateCartTotal(), isInCart, cleanCart, addToCart, removeFromCart, findItemQuantity
     }}>
         {children}
     </CartContext.Provider >
