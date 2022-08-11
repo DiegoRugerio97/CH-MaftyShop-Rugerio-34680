@@ -33,8 +33,9 @@ const CartProvider = ({ children }) => {
     };
 
     const removeFromCart = (id) => {
-        const filteredCart = cart.filter(item => item.id !== id);
-        setCart(filteredCart);
+        const updatedCart = cart;
+        const filteredCart = updatedCart.filter(item => item.itemID !== id);
+        setCart([...filteredCart]);
     };
     // Helper functions
     const findItemIndex = id => {
@@ -47,8 +48,14 @@ const CartProvider = ({ children }) => {
         return cartQuantities.reduce((previousValue, currentValue) => previousValue + currentValue, ZERO);
     }
 
+    const calculateCartTotal = () =>{
+        const cartTotals = cart.map((item) => item.itemTotal);
+        const ZERO = 0;
+        return cartTotals.reduce((previousValue, currentValue)=>previousValue + currentValue, ZERO)
+    }
+
     return <CartContext.Provider value={{
-        cart, cartQuantity: calculateCartItems(), isInCart, cleanCart, addToCart, removeFromCart
+        cart, cartQuantity: calculateCartItems(), cartTotal : calculateCartTotal(), isInCart, cleanCart, addToCart, removeFromCart
     }}>
         {children}
     </CartContext.Provider >

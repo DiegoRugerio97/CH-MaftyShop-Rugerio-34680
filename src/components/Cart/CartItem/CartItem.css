@@ -1,5 +1,19 @@
 .cartImg {
-    width: 100% !important;
-    object-fit: contain !important;
-    height: 15rem;
-  }
+  width: 100% !important;
+  object-fit: contain !important;
+  height: 15rem;
+}
+
+.cartItemContainer {
+  padding: 1.5rem;
+  position: relative;
+}
+
+.cartItemDetail {
+  text-align: justify;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
