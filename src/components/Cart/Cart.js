@@ -8,6 +8,7 @@ import { useContext } from "react";
 // BS imports
 import Container from 'react-bootstrap/Container';
 import CartTable from "./CartTable/CartTable";
+import ContinueBrowsing from "./ContinueBrowsing/ContinueBrowsing";
 
 
 const Cart = () => {
@@ -18,7 +19,7 @@ const Cart = () => {
 
     return <Container>
         {!cartIsEmpty && <CartTable cart={cart} cartTotal = {cartTotal} cartQuantity = {cartQuantity}/>}
-        {cartIsEmpty && <h1>Sin Carrito</h1>}
+        {cartIsEmpty && <ContinueBrowsing/>}
     </Container>
 
 }

@@ -1,0 +1,38 @@
+.continueBrowsingContainer{
+    width: 80%;
+    margin: 5rem auto;
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+    font-size: 1rem;
+}
+
+.continueBrowsing-title{
+    font-size: 4rem;
+    margin: 2rem;
+    font-weight: 200;
+}
+
+.continueBrowsing-img{
+    border-radius: 20px;
+}
+
+.continueBrowsing-subtitle{
+    font-size: 3rem;
+    margin: 1rem;
+}
+
+.continueBrowsing-btn{
+    width: 30%;
+    padding: 0.75rem !important;
+    background-image: url("../../../img/bg.gif") !important;
+    background-position: center;
+    border-color: transparent !important;
+    font-size: 1.5rem !important;
+    
+}
+
+.continueBrowsing-btn:hover{
+   transform: scale(1.05) ;
+   transition: all 0.5s;
+
+}
