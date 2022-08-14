@@ -13,6 +13,8 @@ import Container from 'react-bootstrap/Container';
 import "./ItemDetailContainer.css";
 // Utility function
 import {getItem} from "../../../util/firebaseFetch";
+// Firestore
+import { doc, getDoc ,getFirestore  } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
     // States
@@ -36,9 +38,17 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {   
         setIsLoading(true);
-        getItem("productos",itemID)
-            .then(data => loadItem(data))
-            .catch(err => loadingFailed(err));
+        // getItem("productos",itemID)
+        //     .then(data => loadItem(data))
+        //     .catch(err => loadingFailed(err));
+        // Firestore
+        const db = getFirestore();
+        const itemRef = doc(db, "productos", itemID);
+        getDoc(itemRef).then(doc=>{
+            setItem({itemID: doc.id, ...doc.data()});
+        })
+        .catch(err => loadingFailed(err))
+        .finally(setIsLoading(false));
     }, [itemID]);
 
     const backButtonLink = `/category/${item.itemCategory}`;
