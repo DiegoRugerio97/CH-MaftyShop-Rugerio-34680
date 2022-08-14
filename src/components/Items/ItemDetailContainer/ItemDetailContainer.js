@@ -23,13 +23,7 @@ const ItemDetailContainer = () => {
     // Router
     const { itemID } = useParams();
 
-    const loadItem = (data) => {
-        setItem(data);
-        setIsLoading(false);
-    }
-
     const loadingFailed = (err) => {
-        setIsLoading(false);
         setError(true);
         console.log(err);
     }
