@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row';
 const ItemList = ({itemsList}) => {
 
     const items = itemsList.map(
-        item => <Item key={item.id} itemID = {item.id} itemName={item.itemName} itemImg={item.itemImg} itemDescription={item.itemDescription} itemStock={item.itemStock}/>);
+        item => <Item key={item.itemID} itemID = {item.itemID} itemName={item.itemName} itemImg={item.itemImg} itemDescription={item.itemDescription} itemStock={item.itemStock}/>);
     return (
         <Row className="itemsContainer">
             {items}
