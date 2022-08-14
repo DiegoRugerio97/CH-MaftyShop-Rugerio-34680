@@ -30,19 +30,19 @@ const ItemListContainer = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        // Firebase
-        getProductsFirebase("productos").then(snapshot => {
-            const productsList = snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() }));
-            if (categoryName) {
-                const filteredItems = productsList.filter((item) => item.itemCategory === categoryName);
-                setItems(filteredItems);
-            }
-            else {
-                setItems(productsList);
-            }
-        })
-            .catch(err => loadingFailed(err))
-            .finally(setIsLoading(false));
+        if (categoryName) {
+            getProductsFirebase("productos", categoryName).then(snapshot => {
+                setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
+            }).catch(err => loadingFailed(err))
+                .finally(setIsLoading(false));;
+        }
+        else {
+            getProductsFirebase("productos").then(snapshot => {
+                setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
+            })
+                .catch(err => loadingFailed(err))
+                .finally(setIsLoading(false));
+        }
     }, [categoryName]);
 
     return <Container>
