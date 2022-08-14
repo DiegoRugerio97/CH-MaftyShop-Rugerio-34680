@@ -12,10 +12,7 @@ import { useEffect, useState } from "react";
 // Routing imports
 import { useParams } from "react-router-dom";
 // Utility function
-import { getItems } from "../../../util/firebaseFetch";
-// Firestore
-import { collection, getDocs ,getFirestore  } from "firebase/firestore";
-
+import { getProductsFirebase } from "../../../util/firebaseFetch";
 
 const ItemListContainer = () => {
 
@@ -34,29 +31,18 @@ const ItemListContainer = () => {
     useEffect(() => {
         setIsLoading(true);
         // Firebase
-        const db = getFirestore();
-        const productCollectionRef = collection(db, "productos");
-        getDocs(productCollectionRef).then(snapshot => 
-            {
-                setItems(snapshot.docs.map(doc => ({itemID: doc.id, ...doc.data() })));
-            })
+        getProductsFirebase("productos").then(snapshot => {
+            const productsList = snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() }));
+            if (categoryName) {
+                const filteredItems = productsList.filter((item) => item.itemCategory === categoryName);
+                setItems(filteredItems);
+            }
+            else {
+                setItems(productsList);
+            }
+        })
             .catch(err => loadingFailed(err))
             .finally(setIsLoading(false));
-        
-
-        // getItems()
-        //     .then(data => {
-        //         if (categoryName) {
-        //             const filteredItems = data.filter((item) => item.itemCategory === categoryName);
-        //             setItems(filteredItems);
-        //         }
-        //         else{
-        //             setItems(data);
-        //         }
-        //         setIsLoading(false);
-        //     })
-        //     .catch(err => loadingFailed(err));
-
     }, [categoryName]);
 
     return <Container>

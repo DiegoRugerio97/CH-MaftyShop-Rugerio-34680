@@ -12,9 +12,7 @@ import Container from 'react-bootstrap/Container';
 // Styling
 import "./ItemDetailContainer.css";
 // Utility function
-import {getItem} from "../../../util/firebaseFetch";
-// Firestore
-import { doc, getDoc ,getFirestore  } from "firebase/firestore";
+import { getProductFirebase } from "../../../util/firebaseFetch";
 
 const ItemDetailContainer = () => {
     // States
@@ -38,13 +36,7 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {   
         setIsLoading(true);
-        // getItem("productos",itemID)
-        //     .then(data => loadItem(data))
-        //     .catch(err => loadingFailed(err));
-        // Firestore
-        const db = getFirestore();
-        const itemRef = doc(db, "productos", itemID);
-        getDoc(itemRef).then(doc=>{
+        getProductFirebase("productos", itemID).then(doc=>{
             setItem({itemID: doc.id, ...doc.data()});
         })
         .catch(err => loadingFailed(err))
