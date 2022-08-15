@@ -1,16 +1,21 @@
 .clearCartButton {
-    margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-family: "Oswald", sans-serif;
-    font-size: 1rem;
-    background-color: rgb(206, 64, 64) !important;
-  }
-  
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  font-size: 0.75rem !important;
+  background-color: rgb(206, 64, 64) !important;
+}
 
-  .clearCartButton:hover{
-    background-color: rgb(185, 24, 24) !important;
-  } 
+.clearCartButton:hover {
+  background-color: rgb(185, 24, 24) !important;
+}
+
+@media (min-width: 992px) {
+  .clearCartButton {
+    font-size: 0.9rem !important;
+  }
+}
