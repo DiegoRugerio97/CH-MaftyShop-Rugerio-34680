@@ -32,3 +32,12 @@ Los temas vistos en el curso y aplicados en el desarrollo de la webapp son los s
 React Bootstrap
 
 Aparte de las dependencias vistas en clase, react y react router dom, decidí agregar a mi proyecto la librería react-bootstrap para el apartado visual de la aplicación, debido a su fácil implementación y los estilos responsive que este framework ofrece.
+
+React Router
+
+Permite facilitar la navegacion y el enrutamiento de la aplicacion con rutas intuitivas definidas por el desarrollador.
+Cada item tiene su ruta, asi como cada categoria.
+
+Firebase
+
+Permite conectar la app directamente a la base de datos almacenada en el Firestore de Firebase. 

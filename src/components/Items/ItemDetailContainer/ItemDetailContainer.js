@@ -12,7 +12,7 @@ import Container from 'react-bootstrap/Container';
 // Styling
 import "./ItemDetailContainer.css";
 // Utility function
-import {getItem} from "../../../util/firebaseFetch";
+import { getProductFirebase } from "../../../util/firebaseFetch";
 
 const ItemDetailContainer = () => {
     // States
@@ -23,22 +23,18 @@ const ItemDetailContainer = () => {
     // Router
     const { itemID } = useParams();
 
-    const loadItem = (data) => {
-        setItem(data);
-        setIsLoading(false);
-    }
-
     const loadingFailed = (err) => {
-        setIsLoading(false);
         setError(true);
         console.log(err);
     }
 
     useEffect(() => {   
         setIsLoading(true);
-        getItem("productos",itemID)
-            .then(data => loadItem(data))
-            .catch(err => loadingFailed(err));
+        getProductFirebase("productos", itemID).then(doc=>{
+            setItem({itemID: doc.id, ...doc.data()});
+        })
+        .catch(err => loadingFailed(err))
+        .finally(setIsLoading(false));
     }, [itemID]);
 
     const backButtonLink = `/category/${item.itemCategory}`;

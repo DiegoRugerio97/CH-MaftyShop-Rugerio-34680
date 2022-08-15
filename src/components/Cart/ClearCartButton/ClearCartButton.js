@@ -18,7 +18,7 @@ const ClearCartButton = () => {
     }
 
      return <>
-         <Button className="clearCartButton" onClick={clickHandler} variant="danger">Limpiar Carrito</Button>
+         <Button className="clearCartButton" onClick={clickHandler} variant="danger">Limpiar</Button>
      </> 
     }
 

@@ -7,14 +7,14 @@ import ClearCartButton from "../ClearCartButton/ClearCartButton";
 // Styling
 import "./CartTable.css"
 
-const CartTable = ({ cart, cartTotal, cartQuantity}) => {
+const CartTable = ({ cart, cartTotal, cartQuantity }) => {
 
     const itemRows = cart.map(itemInCart => {
         return <CartItem key={itemInCart.itemID} itemID={itemInCart.itemID} itemImg={itemInCart.itemImg} itemName={itemInCart.itemName} itemPrice={itemInCart.itemPrice} quantity={itemInCart.quantity} itemTotal={itemInCart.itemTotal} />
     }
     );
 
-    const formatedTotal = Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN'}).format(cartTotal);
+    const formatedTotal = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(cartTotal);
 
     return <>
         <Table className='cartTable' bordered hover responsive>
@@ -30,15 +30,16 @@ const CartTable = ({ cart, cartTotal, cartQuantity}) => {
             </thead>
             <tbody>
                 {itemRows}
+                <tr>
+                    <th>Total</th>
+                    <th> </th>
+                    <th></th>
+                    <th>{cartQuantity}</th>
+                    <th>{formatedTotal}</th>
+                    <th className='cartItemContainer'><ClearCartButton /></th>
+                </tr>
             </tbody>
-            <tr>
-                <th>Total</th>
-                <th> </th>
-                <th></th>
-                <th>{cartQuantity}</th>
-                <th>{formatedTotal}</th>
-                <th className='cartItemContainer'><ClearCartButton /></th>
-            </tr>
+
         </Table>
     </>
 }
