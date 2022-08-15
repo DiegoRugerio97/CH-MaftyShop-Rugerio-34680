@@ -12,6 +12,7 @@ Durante el desarrollo de esta webapp de ecommerce se practicaron los conceptos f
 La base de datos donde se esta almacenando toda la información de los productos que se ofrecen en el ecommerce es una Realtime Database de Firebase.
 Para consultar la lista de productos:
 https://mafty-shop-default-rtdb.firebaseio.com/productos.json
+En la app, se implemento Firestore con su respectiva conexion a traves de Firebase como la database de la app.
 
 ## Desarrollo
 
