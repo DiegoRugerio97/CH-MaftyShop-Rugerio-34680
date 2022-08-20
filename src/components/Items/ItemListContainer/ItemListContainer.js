@@ -41,7 +41,7 @@ const ItemListContainer = () => {
                 setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
             })
                 .catch(err => loadingFailed(err))
-                .finally(setIsLoading(false));
+                .finally(()=>setIsLoading(false));
         }
     }, [categoryName]);
 
