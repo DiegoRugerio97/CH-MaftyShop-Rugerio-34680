@@ -7,13 +7,14 @@ import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
 // Components imports
 import ContinueBrowsing from "../Cart/ContinueBrowsing/ContinueBrowsing";
+import CheckoutForm from './CheckoutForm/CheckoutForm';
 
 const Checkout = () => {
 
     const { cart, cartTotal, cartQuantity } = useContext(CartContext);
 
     return <Container>
-        {!cartQuantity && <ContinueBrowsing/>}
+        {cartQuantity !== 0 ? <CheckoutForm/> : <ContinueBrowsing/>}
     </Container>
 }
 

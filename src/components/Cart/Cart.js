@@ -5,6 +5,8 @@ import "./Cart.css";
 import { CartContext } from "../../context/CartContext";
 // React imports
 import { useContext } from "react";
+// React Router imports
+import { Link } from 'react-router-dom';
 // BS imports
 import Container from 'react-bootstrap/Container';
 import CartTable from "./CartTable/CartTable";
@@ -18,8 +20,11 @@ const Cart = () => {
     const cartIsEmpty = cart.length === 0;
 
     return <Container>
-        {!cartIsEmpty && <CartTable cart={cart} cartTotal = {cartTotal} cartQuantity = {cartQuantity}/>}
-        {cartIsEmpty && <ContinueBrowsing/>}
+        {!cartIsEmpty && <>
+            <CartTable cart={cart} cartTotal={cartTotal} cartQuantity={cartQuantity} />
+            <Link to={"/checkout"}>Checkout</Link>
+        </>}
+        {cartIsEmpty && <ContinueBrowsing />}
     </Container>
 
 }
