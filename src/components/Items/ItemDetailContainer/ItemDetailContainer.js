@@ -34,7 +34,7 @@ const ItemDetailContainer = () => {
             setItem({itemID: doc.id, ...doc.data()});
         })
         .catch(err => loadingFailed(err))
-        .finally(setIsLoading(false));
+        .finally(()=>setIsLoading(false));
     }, [itemID]);
 
     const backButtonLink = `/category/${item.itemCategory}`;
