@@ -1,10 +1,11 @@
 // CheckoutForm component - renders all CheckoutInput, manages data state, receives info from inputs.
 // BS imports
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 // React imports
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // Custom component imports
-import CheckoutInput from '../CheckoutInput/CheckoutInput';
+import TextInput from '../TextInput/TextInput';
 
 const CheckoutForm = () => {
     // CONSTANT -  Generates CheckoutInputs based on this list.
@@ -12,46 +13,72 @@ const CheckoutForm = () => {
         labelName: "Nombre",
         inputName: "name",
         errorMessage: "Por favor introduce tu información completa.",
-        onValueChangeHandler: console.log
+        validationType: "text"
     },
     {
         labelName: "Apellido",
         inputName: "lastName",
         errorMessage: "Por favor introduce tu información completa.",
-        onValueChangeHandler: console.log
+        validationType: "text"
     },
     {
         labelName: "Email",
         inputName: "email",
         errorMessage: "Por favor introduce una dirección de e-mail valida.",
-        onValueChangeHandler: console.log
+        validationType: "mail"
     },
     {
         labelName: "Teléfono",
         inputName: "phone",
         errorMessage: "Por favor introduce un teléfono valido.",
-        onValueChangeHandler: console.log
+        validationType: "phone"
     },
     {
-        labelName: "Direccion",
+        labelName: "Dirección",
         inputName: "address",
         errorMessage: "Por favor introduce una dirección valida.",
-        onValueChangeHandler: console.log
+        validationType: "text"
     }];
 
-    const [clientData, setClientData] = useState({ name: "", surname: "", email: "", phone: "", address: "" });
+    const [clientData, setClientData] = useState({ name: "", lastName: "", email: "", phone: "", address: "" });
+    const [isFormValid, setIsFormValid] = useState(false);
 
-    const inputsToRender = DATA_TO_RETRIEVE.map((neededData => {
-        return <CheckoutInput
-            labelName={neededData.labelName} 
-            inputName={neededData.inputName}
-            errorMessage={neededData.errorMessage}
-            onValueChangeHandler={neededData.onValueChangeHandler}/>
-    }));
+    const onInputChangeSetter = (field, value) => {
+        setClientData({ ...clientData, [field]: value });
+    }
+
+    const inputsToRender = DATA_TO_RETRIEVE.map((dataField) => {
+        return <TextInput key={dataField.inputName}
+            labelName={dataField.labelName}
+            inputName={dataField.inputName}
+            errorMessage={dataField.errorMessage}
+            onInputChangeSetter={onInputChangeSetter}
+            validationType={dataField.validationType} />
+    });
+
+    useEffect(() => {
+        Object.values(clientData).forEach((value) => {
+            if (value.trim() === "") {
+                setIsFormValid(false);
+            }
+            else {
+                setIsFormValid(true);
+            }
+        })
+    }, [clientData])
+
+    const onSubmitHandler = (e) =>{
+        e.preventDefault();
+        console.log(clientData);
+    }
+
 
     return <>
-        <Form>
+        <Form onSubmit = {onSubmitHandler}>
             {inputsToRender}
+            <Button variant="dark" type="submit" disabled={!isFormValid}>
+                Generar Orden
+            </Button>
         </Form>
     </>
 }
