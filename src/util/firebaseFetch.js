@@ -40,6 +40,13 @@ export const createOrderFirebase = (clientData, cartData, cartTotal) => {
 
 // Helper Functions
 const createOrderDate = () => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return Date.now().toLocaleString(undefined, options);
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    let mm = now.getMonth() + 1;
+    let dd = now.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    return dd + '/' + mm + '/' + yyyy;
 }

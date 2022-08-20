@@ -8,19 +8,32 @@ import { useContext, useState } from "react";
 // Components imports
 import ContinueBrowsing from "../Cart/ContinueBrowsing/ContinueBrowsing";
 import CheckoutForm from './CheckoutForm/CheckoutForm';
+// Firebase function
+import { createOrderFirebase } from '../../util/firebaseFetch';
 
 const Checkout = () => {
 
     const { cart, cartTotal, cartQuantity } = useContext(CartContext);
     const [clientData, setClientData] = useState({});
+    const [orderID, setOrderID] = useState();
 
     const onSubmitClientData = (data) => {
-        setClientData({...data});
+        setClientData(data);
+        createOrderFirebase(clientData, cart, cartTotal)
+            .then(({ id }) => setOrderID(id))
+            .catch(e => console.log(e));
     }
 
+    if (cartQuantity !== 0) {
+        return <Container>
+            <CheckoutForm onSubmitClientData={onSubmitClientData} />
+            {orderID && <h1>{orderID}</h1>}
+        </Container>
+    }
     return <Container>
-        {cartQuantity !== 0 ? <CheckoutForm onSubmitClientData = {onSubmitClientData}/> : <ContinueBrowsing/>}
+        <ContinueBrowsing />
     </Container>
+
 }
 
 export default Checkout;
