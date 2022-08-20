@@ -1,7 +1,7 @@
 // Using firebase package
 // Firestore
-import { doc, getDoc, getFirestore, collection, getDocs, query, where } from "firebase/firestore";
-
+import { doc, getDoc, getFirestore, collection, getDocs, query, where, addDoc } from "firebase/firestore";
+// GET
 export const getProductsFirebase = (collectionName, queryExpression) => {
     const db = getFirestore();
     if (queryExpression !== undefined) {
@@ -23,17 +23,23 @@ export const getProductFirebase = (collectionName, productID) => {
     return getDoc(productDocRef);
 }
 
-// Utility functions for fetching to firebase
-// Deprecated in app, fetch using JSON
-const FIREBASE_URL = "https://mafty-shop-default-rtdb.firebaseio.com";
 
-export const getItems = () => {
-    const itemsPromise = fetch(`${FIREBASE_URL}/productos.json`).then(response => response.ok ? response.json() : Promise.reject("Error al cargar datos."));
-    return itemsPromise;
+// POST
+export const createOrderFirebase = (clientData, cartData, cartTotal) => {
+    const order = {
+        clientData: clientData,
+        cartData: cartData,
+        orderDate: createOrderDate(),
+        cartTotal: cartTotal
+    }
+    const db = getFirestore();
+    const ordersCollectionRef = collection(db, "orders");
+    return addDoc(ordersCollectionRef, order);
 }
 
-export const getItem = (category, itemID) => {
-    const itemPromise = fetch(`${FIREBASE_URL}/${category}/${itemID}.json`).then(response => response.ok ? response.json() : Promise.reject("Error al cargar producto."));
-    return itemPromise;
-}
 
+// Helper Functions
+const createOrderDate = () => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return Date.now().toLocaleString(undefined, options);
+}
