@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 // Context
 import { CartContext } from "../../context/CartContext";
 // React imports
-import { useContext } from "react";
+import { useContext, useState } from "react";
 // Components imports
 import ContinueBrowsing from "../Cart/ContinueBrowsing/ContinueBrowsing";
 import CheckoutForm from './CheckoutForm/CheckoutForm';
@@ -12,9 +12,14 @@ import CheckoutForm from './CheckoutForm/CheckoutForm';
 const Checkout = () => {
 
     const { cart, cartTotal, cartQuantity } = useContext(CartContext);
+    const [clientData, setClientData] = useState({});
+
+    const onSubmitClientData = (data) => {
+        setClientData({...data});
+    }
 
     return <Container>
-        {cartQuantity !== 0 ? <CheckoutForm/> : <ContinueBrowsing/>}
+        {cartQuantity !== 0 ? <CheckoutForm onSubmitClientData = {onSubmitClientData}/> : <ContinueBrowsing/>}
     </Container>
 }
 

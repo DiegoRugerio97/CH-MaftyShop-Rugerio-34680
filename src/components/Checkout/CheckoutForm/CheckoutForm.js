@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 // Custom component imports
 import TextInput from '../TextInput/TextInput';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({onSubmitClientData}) => {
     // CONSTANT -  Generates CheckoutInputs based on this list.
     const DATA_TO_RETRIEVE = [{
         labelName: "Nombre",
@@ -70,6 +70,7 @@ const CheckoutForm = () => {
     const onSubmitHandler = (e) =>{
         e.preventDefault();
         console.log(clientData);
+        onSubmitClientData(clientData);
     }
 
 
