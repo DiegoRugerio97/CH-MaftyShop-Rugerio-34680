@@ -1,0 +1,29 @@
+.invalidInput {
+  background-color: rgba(255, 0, 0, 0.151) !important;
+  outline: red !important;
+}
+
+.invalidMessage {
+  display: inline;
+  color: red !important;
+}
+
+.hiddenMessage {
+  visibility: hidden;
+}
+
+.textInputLabel {
+  font-size: 1.25rem;
+}
+
+.textInputMessage {
+  font-size: 1.15rem !important;
+}
+
+.textInputField {
+  font-size: 1.25rem !important;
+}
+
+.textInput {
+  font-family: "Oswald", sans-serif;
+}

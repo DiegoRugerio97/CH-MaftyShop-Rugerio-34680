@@ -1,0 +1,12 @@
+.checkoutForm{
+    margin: 5rem auto;
+    width: 80%;
+}
+
+.checkoutButton{
+    font-family: "Oswald", sans-serif !important;
+    display: block !important;
+    margin: 2rem auto;
+    padding: 10px;
+    font-size: 1.25rem !important;
+}

@@ -7,6 +7,7 @@ import NavBar from './components/NavBar/NavBar.js';
 import ItemDetailContainer from './components/Items/ItemDetailContainer/ItemDetailContainer';
 import AboutUs from './components/AboutUs/AboutUs';
 import Cart from './components/Cart/Cart';
+import Checkout from './components/Checkout/Checkout';
 // Custom Context Provider
 import CartProvider from './context/CartContext';
 // BS components
@@ -15,6 +16,7 @@ import Container from 'react-bootstrap/Container';
 import React from 'react';
 // Router imports
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 function App() {
 
@@ -29,6 +31,7 @@ function App() {
             <Route path="category/:categoryName" element={<ItemListContainer />} />
             <Route path="aboutUs" element={<AboutUs />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="checkout" element={<Checkout />} />
           </Routes>
         </Container>
       </CartProvider>

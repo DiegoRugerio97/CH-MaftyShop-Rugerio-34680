@@ -1,7 +1,7 @@
 // Using firebase package
 // Firestore
-import { doc, getDoc, getFirestore, collection, getDocs, query, where } from "firebase/firestore";
-
+import { doc, getDoc, getFirestore, collection, getDocs, query, where, addDoc, runTransaction } from "firebase/firestore";
+// GET
 export const getProductsFirebase = (collectionName, queryExpression) => {
     const db = getFirestore();
     if (queryExpression !== undefined) {
@@ -23,17 +23,49 @@ export const getProductFirebase = (collectionName, productID) => {
     return getDoc(productDocRef);
 }
 
-// Utility functions for fetching to firebase
-// Deprecated in app, fetch using JSON
-const FIREBASE_URL = "https://mafty-shop-default-rtdb.firebaseio.com";
 
-export const getItems = () => {
-    const itemsPromise = fetch(`${FIREBASE_URL}/productos.json`).then(response => response.ok ? response.json() : Promise.reject("Error al cargar datos."));
-    return itemsPromise;
+// POST
+export const createOrderFirebase = (clientData, cartData, cartTotal) => {
+    const order = {
+        clientData: clientData,
+        cartData: cartData,
+        orderDate: createOrderDate(),
+        cartTotal: cartTotal
+    }
+    const db = getFirestore();
+    const ordersCollectionRef = collection(db, "orders");
+    return addDoc(ordersCollectionRef, order);
 }
 
-export const getItem = (category, itemID) => {
-    const itemPromise = fetch(`${FIREBASE_URL}/${category}/${itemID}.json`).then(response => response.ok ? response.json() : Promise.reject("Error al cargar producto."));
-    return itemPromise;
+// Update Stock via transactions
+export const updateProductStock = (cartItem, collectionName) => {
+    const db = getFirestore();
+    const itemDocRef = doc(db, collectionName, cartItem.itemID);
+    runTransaction(db, (transaction) => {
+        return transaction.get(itemDocRef)
+            .then((itemDoc) => {
+                const newStock = itemDoc.data().itemStock - cartItem.quantity;
+                if (newStock < 0) {
+                    return Promise.reject(`No stock for product ${cartItem.itemName}`);
+                }
+                return transaction.update(itemDocRef, { itemStock: newStock })
+            })
+    })
+        .then(() => console.log("Stock updated"))
+        .catch((e) => console.log("Error updating stock", e))
 }
+
+// Helper Functions
+const createOrderDate = () => {
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    let mm = now.getMonth() + 1;
+    let dd = now.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    return dd + '/' + mm + '/' + yyyy;
+}
+
 

@@ -34,14 +34,14 @@ const ItemListContainer = () => {
             getProductsFirebase("productos", categoryName).then(snapshot => {
                 setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
             }).catch(err => loadingFailed(err))
-                .finally(setIsLoading(false));;
+                .finally(()=>setIsLoading(false));;
         }
         else {
             getProductsFirebase("productos").then(snapshot => {
                 setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
             })
                 .catch(err => loadingFailed(err))
-                .finally(setIsLoading(false));
+                .finally(()=>setIsLoading(false));
         }
     }, [categoryName]);
 
