@@ -1,0 +1,10 @@
+.checkoutForm{
+    margin: 5rem auto;
+    width: 80%;
+}
+
+.checkoutButton{
+    display: block;
+    margin: 2rem auto;
+    padding: 10px;
+}

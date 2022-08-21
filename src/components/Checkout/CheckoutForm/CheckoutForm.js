@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
 // Custom component imports
 import TextInput from '../TextInput/TextInput';
+// Styling
+import "./CheckoutForm.css"
 
 const CheckoutForm = ({onSubmitClientData}) => {
     // CONSTANT -  Generates CheckoutInputs based on this list.
@@ -74,9 +76,9 @@ const CheckoutForm = ({onSubmitClientData}) => {
 
 
     return <>
-        <Form onSubmit = {onSubmitHandler}>
+        <Form className = "checkoutForm" onSubmit = {onSubmitHandler}>
             {inputsToRender}
-            <Button variant="dark" type="submit" disabled={!isFormValid}>
+            <Button className='checkoutButton' variant="dark" type="submit" disabled={!isFormValid}>
                 Generar Orden
             </Button>
         </Form>
