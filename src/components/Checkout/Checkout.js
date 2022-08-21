@@ -8,6 +8,7 @@ import { useContext, useState } from "react";
 // Components imports
 import ContinueBrowsing from "../Cart/ContinueBrowsing/ContinueBrowsing";
 import CheckoutForm from './CheckoutForm/CheckoutForm';
+import LoadingSpinner from '../util/LoadingSpinner/LoadingSpinner';
 // Firebase function
 import { createOrderFirebase, updateProductStock } from '../../util/firebaseFetch';
 
@@ -15,23 +16,40 @@ const Checkout = () => {
 
     const { cart, cartTotal, cartQuantity, cleanCart } = useContext(CartContext);
     const [orderID, setOrderID] = useState();
+    const [isCreating, setIsCreating] = useState(false);
 
     const onSubmitClientData = (data) => {
+        setIsCreating(true);
         createOrderFirebase(data, cart, cartTotal)
             .then(({ id }) => setOrderID(id))
+            .then(() => {
+                setIsCreating(false);
+                cleanCart();
+            })
             .catch(e => console.log(e));
         cart.forEach((cartItem) => {
             updateProductStock(cartItem, "productos");
-        })
-        cleanCart();
+        });
     }
 
-    if (cartQuantity !== 0) {
+    if (cartQuantity !== 0 && !isCreating && !orderID) {
         return <Container>
             <CheckoutForm onSubmitClientData={onSubmitClientData} />
-            {orderID && <h1>{orderID}</h1>}
         </Container>
     }
+
+    if (isCreating) {
+        return <Container>
+            <LoadingSpinner text="Estamos creando tu ordén..." />
+        </Container>
+    }
+
+    if (!isCreating && orderID) {
+        return <Container>
+            <h1>{orderID}</h1>
+        </Container>
+    }
+
     return <Container>
         <ContinueBrowsing />
     </Container>
