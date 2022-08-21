@@ -13,7 +13,7 @@ import { createOrderFirebase, updateProductStock } from '../../util/firebaseFetc
 
 const Checkout = () => {
 
-    const { cart, cartTotal, cartQuantity } = useContext(CartContext);
+    const { cart, cartTotal, cartQuantity, cleanCart } = useContext(CartContext);
     const [orderID, setOrderID] = useState();
 
     const onSubmitClientData = (data) => {
@@ -23,6 +23,7 @@ const Checkout = () => {
         cart.forEach((cartItem) => {
             updateProductStock(cartItem, "productos");
         })
+        cleanCart();
     }
 
     if (cartQuantity !== 0) {

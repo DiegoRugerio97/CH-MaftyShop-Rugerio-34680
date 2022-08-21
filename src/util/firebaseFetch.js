@@ -1,6 +1,6 @@
 // Using firebase package
 // Firestore
-import { doc, getDoc, getFirestore, collection, getDocs, query, where, addDoc, runTransaction, Transaction } from "firebase/firestore";
+import { doc, getDoc, getFirestore, collection, getDocs, query, where, addDoc, runTransaction } from "firebase/firestore";
 // GET
 export const getProductsFirebase = (collectionName, queryExpression) => {
     const db = getFirestore();
