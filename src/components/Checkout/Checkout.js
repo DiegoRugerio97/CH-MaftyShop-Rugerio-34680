@@ -11,6 +11,7 @@ import CheckoutForm from './CheckoutForm/CheckoutForm';
 import LoadingSpinner from '../util/LoadingSpinner/LoadingSpinner';
 // Firebase function
 import { createOrderFirebase, updateProductStock } from '../../util/firebaseFetch';
+import OrderInformation from './OrderInformation/OrderInformation';
 
 const Checkout = () => {
 
@@ -46,7 +47,7 @@ const Checkout = () => {
 
     if (!isCreating && orderID) {
         return <Container>
-            <h1>{orderID}</h1>
+           <OrderInformation orderID ={orderID}/>
         </Container>
     }
 
