@@ -69,7 +69,6 @@ const CheckoutForm = ({onSubmitClientData}) => {
 
     const onSubmitHandler = (e) =>{
         e.preventDefault();
-        console.log(clientData);
         onSubmitClientData(clientData);
     }
 

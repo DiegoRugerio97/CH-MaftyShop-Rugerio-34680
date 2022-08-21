@@ -9,19 +9,20 @@ import { useContext, useState } from "react";
 import ContinueBrowsing from "../Cart/ContinueBrowsing/ContinueBrowsing";
 import CheckoutForm from './CheckoutForm/CheckoutForm';
 // Firebase function
-import { createOrderFirebase } from '../../util/firebaseFetch';
+import { createOrderFirebase, updateProductStock } from '../../util/firebaseFetch';
 
 const Checkout = () => {
 
     const { cart, cartTotal, cartQuantity } = useContext(CartContext);
-    const [clientData, setClientData] = useState({});
     const [orderID, setOrderID] = useState();
 
     const onSubmitClientData = (data) => {
-        setClientData(data);
-        createOrderFirebase(clientData, cart, cartTotal)
+        createOrderFirebase(data, cart, cartTotal)
             .then(({ id }) => setOrderID(id))
             .catch(e => console.log(e));
+        cart.forEach((cartItem) => {
+            updateProductStock(cartItem, "productos");
+        })
     }
 
     if (cartQuantity !== 0) {

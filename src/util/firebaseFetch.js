@@ -1,6 +1,6 @@
 // Using firebase package
 // Firestore
-import { doc, getDoc, getFirestore, collection, getDocs, query, where, addDoc } from "firebase/firestore";
+import { doc, getDoc, getFirestore, collection, getDocs, query, where, addDoc, runTransaction, Transaction } from "firebase/firestore";
 // GET
 export const getProductsFirebase = (collectionName, queryExpression) => {
     const db = getFirestore();
@@ -37,6 +37,23 @@ export const createOrderFirebase = (clientData, cartData, cartTotal) => {
     return addDoc(ordersCollectionRef, order);
 }
 
+// Update Stock via transactions
+export const updateProductStock = (cartItem, collectionName) => {
+    const db = getFirestore();
+    const itemDocRef = doc(db, collectionName, cartItem.itemID);
+    runTransaction(db, (transaction) => {
+        return transaction.get(itemDocRef)
+            .then((itemDoc) => {
+                const newStock = itemDoc.data().itemStock - cartItem.quantity;
+                if (newStock < 0) {
+                    return Promise.reject(`No stock for product ${cartItem.itemName}`);
+                }
+                return transaction.update(itemDocRef, { itemStock: newStock })
+            })
+    })
+        .then(() => console.log("Stock updated"))
+        .catch((e) => console.log("Error updating stock", e))
+}
 
 // Helper Functions
 const createOrderDate = () => {
@@ -50,3 +67,5 @@ const createOrderDate = () => {
 
     return dd + '/' + mm + '/' + yyyy;
 }
+
+
