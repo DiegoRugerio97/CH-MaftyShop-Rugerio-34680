@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 // Routing imports
 import { useParams } from "react-router-dom";
 // Utility function
-import { getProductsFirebase } from "../../../util/firebaseFetch";
+import { getCollectionFirebase } from "../../../util/firebaseFetch";
 
 const ItemListContainer = () => {
 
@@ -31,17 +31,22 @@ const ItemListContainer = () => {
     useEffect(() => {
         setIsLoading(true);
         if (categoryName) {
-            getProductsFirebase("productos", categoryName).then(snapshot => {
-                setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
-            }).catch(err => loadingFailed(err))
-                .finally(()=>setIsLoading(false));;
+            const queryExpression = { first: "itemCategory", middle: "==", last: categoryName };
+            getCollectionFirebase("productos", queryExpression)
+                .then(snapshot => {
+                    setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
+                })
+                .catch(err => loadingFailed(err))
+                .finally(() => setIsLoading(false));;
         }
         else {
-            getProductsFirebase("productos").then(snapshot => {
-                setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
-            })
+            const queryExpression = { first: "itemStock", middle: ">", last: 0 };
+            getCollectionFirebase("productos", queryExpression)
+                .then(snapshot => {
+                    setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
+                })
                 .catch(err => loadingFailed(err))
-                .finally(()=>setIsLoading(false));
+                .finally(() => setIsLoading(false));
         }
     }, [categoryName]);
 

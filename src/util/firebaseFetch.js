@@ -2,19 +2,17 @@
 // Firestore
 import { doc, getDoc, getFirestore, collection, getDocs, query, where, addDoc, runTransaction } from "firebase/firestore";
 // GET
-export const getProductsFirebase = (collectionName, queryExpression) => {
+export const getCollectionFirebase = (collectionName, queryExpression) => {
     const db = getFirestore();
     if (queryExpression !== undefined) {
         const queryRef = query(
             collection(db, collectionName),
-            where("itemCategory", "==", queryExpression)
+            where(queryExpression.first, queryExpression.middle, queryExpression.last)
         );
         return getDocs(queryRef);
     }
-    else {
-        const productCollectionRef = collection(db, collectionName);
-        return getDocs(productCollectionRef);
-    }
+    const productCollectionRef = collection(db, collectionName);
+    return getDocs(productCollectionRef);
 }
 
 export const getProductFirebase = (collectionName, productID) => {
