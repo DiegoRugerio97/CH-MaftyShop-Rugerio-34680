@@ -15,7 +15,6 @@ import { useParams } from "react-router-dom";
 // Utility function
 import { getCollectionFirebase } from "../../../util/firebaseFetch";
 
-
 const ItemListContainer = () => {
 
     const [items, setItems] = useState([]);
@@ -35,7 +34,7 @@ const ItemListContainer = () => {
         setIsLoading(true);
         let queryExpression;
         if (categoryName) {
-            queryExpression = { first: "itemCategory", middle: "==", last: categoryName};
+            queryExpression = { first: "itemCategory", middle: "==", last: categoryName };
         }
         else {
             queryExpression = { first: "itemStock", middle: ">", last: 0 };
@@ -52,10 +51,8 @@ const ItemListContainer = () => {
     }, [categoryName]);
 
     return <Container>
-        {isLoading &&
-            <LoadingSpinner text={"Cargando productos..."} />
-        }
-        {error && <ErrorPage errorMessage={error}/>}
+        {error && <ErrorPage errorMessage={error} />}
+        {isLoading && <LoadingSpinner text={"Cargando productos..."} />}
         {!isLoading && !error && <ItemList itemsList={items} />}
     </Container>;
 }
