@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 // Custom components
 import ItemList from "../ItemList/ItemList";
 import LoadingSpinner from "../../util/LoadingSpinner/LoadingSpinner";
+import ErrorPage from "../../util/ErrorPage/ErrorPage";
 // React imports
 import React from "react";
 import { useEffect, useState } from "react";
@@ -14,22 +15,23 @@ import { useParams } from "react-router-dom";
 // Utility function
 import { getCollectionFirebase } from "../../../util/firebaseFetch";
 
+
 const ItemListContainer = () => {
 
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(null);
 
     // Routing
     const { categoryName } = useParams();
 
     const loadingFailed = (err) => {
-        setError(true);
+        setError(err);
         console.log(err);
     }
 
     useEffect(() => {
-        setError(false);
+        setError(null);
         setIsLoading(true);
         let queryExpression;
         if (categoryName) {
@@ -53,7 +55,7 @@ const ItemListContainer = () => {
         {isLoading &&
             <LoadingSpinner text={"Cargando productos..."} />
         }
-        {error && <h1>Hubo un error</h1>}
+        {error && <ErrorPage errorMessage={error}/>}
         {!isLoading && !error && <ItemList itemsList={items} />}
     </Container>;
 }
