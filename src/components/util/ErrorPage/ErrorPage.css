@@ -1,0 +1,23 @@
+.errorPage-container {
+  width: 80%;
+  margin: 5rem auto;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  font-size: 1rem;
+}
+
+.errorPage-img {
+  width: 50%;
+  margin: 3rem auto;
+}
+
+.errorPage-title {
+  font-size: 3rem;
+  margin: 2rem;
+  font-weight: 200;
+}
+
+.errorPage-subtitle {
+  font-size: 3rem;
+  margin: 1rem;
+}
