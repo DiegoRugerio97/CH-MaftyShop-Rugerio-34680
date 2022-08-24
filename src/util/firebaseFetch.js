@@ -28,7 +28,8 @@ export const createOrderFirebase = (clientData, cartData, cartTotal) => {
         clientData: clientData,
         cartData: cartData,
         orderDate: createOrderDate(),
-        cartTotal: cartTotal
+        cartTotal: cartTotal,
+        state:"created"
     }
     const db = getFirestore();
     const ordersCollectionRef = collection(db, "orders");
