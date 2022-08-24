@@ -31,30 +31,22 @@ const ItemListContainer = () => {
     useEffect(() => {
         setError(false);
         setIsLoading(true);
+        let queryExpression;
         if (categoryName) {
-            const queryExpression = { first: "itemCategory", middle: "==", last: categoryName };
-            getCollectionFirebase("productos", queryExpression)
-                .then(snapshot => {
-                    if (snapshot.empty) {
-                        return Promise.reject("No existe esta categoría");
-                    }
-                    setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
-                })
-                .catch(err => loadingFailed(err))
-                .finally(() => setIsLoading(false));;
+            queryExpression = { first: "itemCategory", middle: "==", last: categoryName};
         }
         else {
-            const queryExpression = { first: "itemStock", middle: ">", last: 0 };
-            getCollectionFirebase("productos", queryExpression)
-                .then(snapshot => {
-                    if (snapshot.empty) {
-                        return Promise.reject("No existe esta categoría");
-                    }
-                    setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
-                })
-                .catch(err => loadingFailed(err))
-                .finally(() => setIsLoading(false));
+            queryExpression = { first: "itemStock", middle: ">", last: 0 };
         }
+        getCollectionFirebase("productos", queryExpression)
+            .then(snapshot => {
+                if (snapshot.empty) {
+                    return Promise.reject("No existe esta categoría");
+                }
+                setItems(snapshot.docs.map(doc => ({ itemID: doc.id, ...doc.data() })));
+            })
+            .catch(err => loadingFailed(err))
+            .finally(() => setIsLoading(false));;
     }, [categoryName]);
 
     return <Container>
