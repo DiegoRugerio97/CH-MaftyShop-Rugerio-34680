@@ -1,11 +1,10 @@
 // OrderInformation component - Renders orderID
 // BS imports
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 // Styling
 import "./OrderInformation.css";
-// React router imports
-import { Link } from "react-router-dom";
+// Custom imports
+import CatalogButton from "../../util/CatalogButton/CatalogButton";
 
 const OrderInformation = ({ orderID }) => {
     return <>
@@ -18,7 +17,7 @@ const OrderInformation = ({ orderID }) => {
                 </Card.Text>
             </Card.Body>
         </Card>
-        <Link className="continueBrowsingLink" to={"/"}><Button className=' continueBrowsing-btn'>Catálogo</Button></Link>
+       <CatalogButton />
     </>
 }
 
