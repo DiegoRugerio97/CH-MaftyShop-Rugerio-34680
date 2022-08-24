@@ -31,6 +31,9 @@ const ItemDetailContainer = () => {
     useEffect(() => {   
         setIsLoading(true);
         getProductFirebase("productos", itemID).then(doc=>{
+            if(!doc.exists()){
+                return Promise.reject(`No existe el ID de producto ${itemID}`);
+            }
             setItem({itemID: doc.id, ...doc.data()});
         })
         .catch(err => loadingFailed(err))
