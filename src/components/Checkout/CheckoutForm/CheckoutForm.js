@@ -9,7 +9,7 @@ import TextInput from '../TextInput/TextInput';
 // Styling
 import "./CheckoutForm.css"
 
-const CheckoutForm = ({onSubmitClientData}) => {
+const CheckoutForm = ({ onSubmitClientData }) => {
     // CONSTANT -  Generates CheckoutInputs based on this list.
     const DATA_TO_RETRIEVE = [{
         labelName: "Nombre",
@@ -30,6 +30,12 @@ const CheckoutForm = ({onSubmitClientData}) => {
         validationType: "mail"
     },
     {
+        labelName: "Confirma tu Email",
+        inputName: "emailConf",
+        errorMessage: "Por favor introduce una dirección de e-mail valida.",
+        validationType: "mail"
+    },
+    {
         labelName: "Teléfono",
         inputName: "phone",
         errorMessage: "Por favor introduce un teléfono valido.",
@@ -42,7 +48,8 @@ const CheckoutForm = ({onSubmitClientData}) => {
         validationType: "text"
     }];
 
-    const [clientData, setClientData] = useState({ name: "", lastName: "", email: "", phone: "", address: "" });
+    const [clientData, setClientData] = useState({ name: "", lastName: "", email: "", emailConf: "", phone: "", address: "" });
+    const [isEmailValid, setIsEmailValid] = useState(false);
     const [isFormValid, setIsFormValid] = useState(false);
 
     const onInputChangeSetter = (field, value) => {
@@ -59,25 +66,30 @@ const CheckoutForm = ({onSubmitClientData}) => {
     });
 
     useEffect(() => {
+        const { email, emailConf } = clientData;
+        setIsEmailValid(email === emailConf);
         Object.values(clientData).forEach((value) => {
             if (value.trim() === "") {
-                setIsFormValid(false);
+                setIsFormValid(isEmailValid && false);
             }
             else {
-                setIsFormValid(true);
+                setIsFormValid(isEmailValid && true);
             }
-        })
-    }, [clientData])
+        });
 
-    const onSubmitHandler = (e) =>{
+    }, [clientData, isEmailValid])
+
+    const onSubmitHandler = (e) => {
+        const {emailConf, ...userData } = clientData;
         e.preventDefault();
-        onSubmitClientData(clientData);
+        onSubmitClientData(userData);
     }
 
 
     return <>
-        <Form className = "checkoutForm" onSubmit = {onSubmitHandler}>
+        <Form className="checkoutForm" onSubmit={onSubmitHandler}>
             {inputsToRender}
+            {!isEmailValid && <p>Email no coincide!</p>}
             <Button className='checkoutButton' variant="dark" type="submit" disabled={!isFormValid}>
                 Generar Orden
             </Button>
