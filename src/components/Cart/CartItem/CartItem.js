@@ -9,12 +9,12 @@ const CartItem = ({itemID, itemImg, itemName, itemPrice, quantity, itemTotal}) =
     const formatedTotal = Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN'}).format(itemTotal);
 
     return <tr>
-        <td><img className="cartImg" src={itemImg} alt={itemName}/></td>
-        <td className="cartItemContainer"><p className="cartItemDetail">{itemName}</p></td>
-        <td className="cartItemContainer"><p className="cartItemDetail">{formatedPrice}</p></td>
-        <td className="cartItemContainer"><p className="cartItemDetail">{quantity}</p></td>
-        <td className="cartItemContainer"><p className="cartItemDetail">{formatedTotal}</p></td>
-        <td className="cartItemContainer"><RemoveButton removeID={itemID}/></td>
+        <td><img className="cartItem-img" src={itemImg} alt={itemName}/></td>
+        <td className="cartItem-container"><p className="cartItem-detail">{itemName}</p></td>
+        <td className="cartItem-container"><p className="cartItem-detail">{formatedPrice}</p></td>
+        <td className="cartItem-container"><p className="cartItem-detail">{quantity}</p></td>
+        <td className="cartItem-container"><p className="cartItem-detail">{formatedTotal}</p></td>
+        <td className="cartItem-container"><RemoveButton removeID={itemID}/></td>
     </tr>
 
 }

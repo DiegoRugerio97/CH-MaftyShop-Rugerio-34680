@@ -1,4 +1,4 @@
-.itemImg {
+.itemDetail-img {
   width: 100% !important;
   object-fit: contain !important;
   border-radius: 15px;
@@ -11,7 +11,7 @@
   position: relative;
 }
 
-.itemCount {
+.itemDetails-count {
   width: 65%   !important;
   margin: 0 auto;
   align-self: flex-end;
@@ -19,13 +19,13 @@
 
 }
 
-.itemName {
+.itemDetails-name {
   font-family: "Oswald", sans-serif;
   font-size: 2.5rem;
   text-align: center;
 }
 
-.itemDescription {
+.itemDetails-description {
   font-family: "Oswald", sans-serif;
   font-size: 1.25rem;
   text-align: justify;
@@ -39,7 +39,7 @@
   height: 100%;
 }
 
-.itemPrice {
+.itemDetails-price {
   font-family: "Oswald", sans-serif;
   font-size: 1.5rem;
   text-align: left;
@@ -53,14 +53,14 @@
 
 
 @media (min-width: 992px) { 
-  .itemName{
+  .itemDetails-name{
       font-size: 2.5rem;
       text-align: left;
   }  
   .itemDetail{
     gap: 0rem;
   }
-  .itemImg{
+  .itemDetail-img{
     height: 45rem;
   }
 }

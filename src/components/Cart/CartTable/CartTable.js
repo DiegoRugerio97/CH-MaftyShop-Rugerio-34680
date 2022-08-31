@@ -36,7 +36,7 @@ const CartTable = ({ cart, cartTotal, cartQuantity }) => {
                     <th></th>
                     <th>{cartQuantity}</th>
                     <th>{formatedTotal}</th>
-                    <th className='cartItemContainer'><ClearCartButton /></th>
+                    <th className='cartItem-container'><ClearCartButton /></th>
                 </tr>
             </tbody>
 

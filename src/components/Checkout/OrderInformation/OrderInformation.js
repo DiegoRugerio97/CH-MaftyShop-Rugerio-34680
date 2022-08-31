@@ -10,8 +10,8 @@ const OrderInformation = ({ orderID }) => {
     return <>
         <Card className='orderCard'>
             <Card.Header as="h1">¡Gracias!</Card.Header>
-            <Card.Body className='orderCardText'>
-                <Card.Title className='orderCardTitle'>¡Tu orden esta lista!</Card.Title>
+            <Card.Body className='orderCard-text'>
+                <Card.Title className='orderCard-title'>¡Tu orden esta lista!</Card.Title>
                 <Card.Text>
                     Hemos registrado tu orden exitosamente, el ID de tu orden es: {orderID}.
                 </Card.Text>

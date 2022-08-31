@@ -54,7 +54,7 @@ const NavBar = () => {
                         src={logo}
                         width="30"
                         height="30"
-                        className="d-inline-block align-top navLogo"
+                        className="d-inline-block align-top nav-logo"
                     />{" "}
                     Mafty Shop
                 </Navbar.Brand>

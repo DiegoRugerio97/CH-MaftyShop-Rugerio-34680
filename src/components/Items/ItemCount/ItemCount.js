@@ -66,16 +66,16 @@ const ItemCount = ({ initial, stock, onAdd }) => {
     }
 
     // Dynamic styling
-    let buttonClassAdd = `${isOverStock && "disabledControls"} itemButton`;
-    let buttonClassSubstract = `${isOne && "disabledControls"} itemButton`;
+    let buttonClassAdd = `${isOverStock && "disabledControls"} item-button`;
+    let buttonClassSubstract = `${isOne && "disabledControls"} item-button`;
 
     return (
         <div className='item'>
-            <span className="itemStockDes">Stock disponible: {stock}</span>
-            <form onSubmit={onAddHandler} className="itemForm">
-                <div className='itemGroup'>
+            <span className="item-stockDes">Stock disponible: {stock}</span>
+            <form onSubmit={onAddHandler} className="item-form">
+                <div className='item-group'>
                     <button type="button" className={buttonClassSubstract} onClick={onSubtractItemHandler}><i className="fa-solid fa-minus" /></button>
-                    <input value={counter} className='itemInput' onChange={onChangeItemHandler} />
+                    <input value={counter} className='item-input' onChange={onChangeItemHandler} />
                     <button type="button" className={buttonClassAdd} onClick={onAddItemHandler}><i className="fa-solid fa-plus" /></button>
                 </div>
                 <button type="submit" className="addButton">Agregar al carrito</button>

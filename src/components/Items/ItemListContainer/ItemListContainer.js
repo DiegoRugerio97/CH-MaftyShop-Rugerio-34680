@@ -1,6 +1,4 @@
 // ItemListContainer component - Render ItemList component and fetch all products from DB
-// Styling
-import "./ItemListContainer.css";
 // BS components
 import Container from 'react-bootstrap/Container';
 // Custom components
