@@ -10,3 +10,9 @@
     padding: 10px;
     font-size: 1.25rem !important;
 }
+
+.warningText{
+    font-family: "Oswald", sans-serif !important;
+    font-size: 2rem !important;
+    color: rgb(255, 0, 0);
+}

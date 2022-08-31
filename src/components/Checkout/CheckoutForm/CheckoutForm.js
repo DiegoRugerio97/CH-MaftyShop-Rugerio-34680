@@ -89,7 +89,7 @@ const CheckoutForm = ({ onSubmitClientData }) => {
     return <>
         <Form className="checkoutForm" onSubmit={onSubmitHandler}>
             {inputsToRender}
-            {!isEmailValid && <p>Email no coincide!</p>}
+            {!isEmailValid && <p className='warningText'>Email no coincide!</p>}
             <Button className='checkoutButton' variant="dark" type="submit" disabled={!isFormValid}>
                 Generar Orden
             </Button>
