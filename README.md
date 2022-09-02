@@ -1,7 +1,8 @@
 # Proyecto del Curso ReactJS CoderHouse
 
 DEPLOY EN 
-mafty-shop.netlify.app
+
+[Mafty Shop](https://mafty-shop.netlify.app/)
 
 En este repositorio se encuentre el código fuente del proyecto de ReactJS de CoderHouse, comisión 34680.
 
@@ -91,4 +92,4 @@ Una vez habilitado el botón para terminar el Checkout, se creará una orden, cr
 Se implemento un spinner y se le regresa al usuario el ID de la orden creada, terminando el flujo de la aplicación.
 
 ## Navegación
-![GIF](https://imgur.com/ds00RoN.gif)
+![GIF](/MaftyShop-GIF-vF.gif)
