@@ -39,12 +39,11 @@ const NavBar = () => {
 
     const placeholders =
         <>
-            <Spinner animation="grow" variant="secondary"/>
-            <Spinner animation="grow" variant="secondary"/>
-            <Spinner animation="grow" variant="secondary"/>
+            <Spinner animation="grow" variant="secondary" />
+            <Spinner animation="grow" variant="secondary" />
+            <Spinner animation="grow" variant="secondary" />
         </>
 
-    // react-BS navbar
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
             <Container>
@@ -67,7 +66,6 @@ const NavBar = () => {
                         {!isLoading && categoriesLinks}
                         {error && <Spinner animation="grow" variant="danger" />}
                     </Nav>
-                    {/* Implementation of CartWidget component with Items in Cart prop */}
                     <Link className='indexLink' to={'/cart'}>
                         <CartWidget />
                     </Link>

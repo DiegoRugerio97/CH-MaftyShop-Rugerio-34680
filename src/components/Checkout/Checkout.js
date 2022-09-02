@@ -47,7 +47,7 @@ const Checkout = () => {
 
     if (!isCreating && orderID) {
         return <Container>
-           <OrderInformation orderID ={orderID}/>
+            <OrderInformation orderID={orderID} />
         </Container>
     }
 
