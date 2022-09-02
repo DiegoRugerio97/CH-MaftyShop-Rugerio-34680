@@ -47,7 +47,7 @@ Firebase
 Permite conectar la app directamente a la base de datos almacenada en el Firestore de Firebase.
 El paquete de firebase ofrece una variedad de métodos de Firestore que permiten acceder asincrónicamente a colecciones y documentos, crear documentos y realizar transacciones. 
 
-##Estructura
+## Estructura
 
 **index.js**
 En el index.js se inicia la aplicación de firebase, la cual le da acceso a la webapp para acceder todos los servicios como Firestore o Auth.
