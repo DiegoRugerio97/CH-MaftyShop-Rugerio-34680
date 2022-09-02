@@ -50,8 +50,6 @@ export const updateProductStock = (cartItem, collectionName) => {
                 return transaction.update(itemDocRef, { itemStock: newStock })
             })
     })
-        .then(() => console.log("Stock updated"))
-        .catch((e) => console.log("Error updating stock", e))
 }
 
 // Helper Functions

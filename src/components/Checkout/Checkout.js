@@ -27,7 +27,6 @@ const Checkout = () => {
                 setIsCreating(false);
                 cleanCart();
             })
-            .catch(e => console.log(e));
         cart.forEach((cartItem) => {
             updateProductStock(cartItem, "productos");
         });

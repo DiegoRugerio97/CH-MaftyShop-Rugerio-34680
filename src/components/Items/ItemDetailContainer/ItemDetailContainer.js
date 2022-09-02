@@ -27,7 +27,6 @@ const ItemDetailContainer = () => {
 
     const loadingFailed = (err) => {
         setError(err);
-        console.log(err);
     }
 
     useEffect(() => {
