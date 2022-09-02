@@ -9,13 +9,41 @@ import CartWidget from '../CartWidget/CartWidget';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
+import Spinner from 'react-bootstrap/Spinner';
 // React Router imports
 import { Link } from 'react-router-dom';
+// React imports
+import { useEffect, useState } from 'react';
+// GET firebase method
+import { getCollectionFirebase } from '../../util/firebaseFetch';
 
 const NavBar = () => {
-    // react-BS navbar
+
+    const [menuCategories, setMenuCategories] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        setIsLoading(true);
+        getCollectionFirebase("categories")
+            .then((snapshot) => {
+                setMenuCategories(snapshot.docs.map((category) => ({ id: category.id, ...category.data() })));
+            })
+            .catch(err => setError(err))
+            .finally(() => setIsLoading(false));
+    }, [])
+
+    const categoriesLinks = menuCategories.map((category) => {
+        return <Link key={category.key} className='categoryLink' to={`/category/${category.key}`}>{category.description}</Link>
+    });
+
+    const placeholders =
+        <>
+            <Spinner animation="grow" variant="secondary" />
+            <Spinner animation="grow" variant="secondary" />
+            <Spinner animation="grow" variant="secondary" />
+        </>
+
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
             <Container>
@@ -25,7 +53,7 @@ const NavBar = () => {
                         src={logo}
                         width="30"
                         height="30"
-                        className="d-inline-block align-top navLogo"
+                        className="d-inline-block align-top nav-logo"
                     />{" "}
                     Mafty Shop
                 </Navbar.Brand>
@@ -34,22 +62,12 @@ const NavBar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Link className='categoryLink' to={'/aboutUs'}>¿Quiénes somos?</Link>
-                        <Link className='categoryLink' to={'/category/gunpla'}>Gundam</Link>
-                        <Link className='categoryLink' to={'/category/figures'}>Figuras</Link>
-                        <Link className='categoryLink' to={'/category/manga'}>Manga</Link>
+                        {isLoading && placeholders}
+                        {!isLoading && categoriesLinks}
+                        {error && <Spinner animation="grow" variant="danger" />}
                     </Nav>
-                    <Form className="d-flex">
-                        <InputGroup className='d-flex'>
-                            <InputGroup.Text id="btnGroupAddon2"><i className="fa-solid fa-magnifying-glass" /></InputGroup.Text>
-                            <Form.Control
-                                type="text"
-                                placeholder="Buscar"
-                            />
-                        </InputGroup>
-                    </Form>
-                    {/* Implementation of CartWidget component with Items in Cart prop */}
                     <Link className='indexLink' to={'/cart'}>
-                        <CartWidget/>
+                        <CartWidget />
                     </Link>
                 </Navbar.Collapse>
             </Container>

@@ -2,19 +2,17 @@
 // Firestore
 import { doc, getDoc, getFirestore, collection, getDocs, query, where, addDoc, runTransaction } from "firebase/firestore";
 // GET
-export const getProductsFirebase = (collectionName, queryExpression) => {
+export const getCollectionFirebase = (collectionName, queryExpression) => {
     const db = getFirestore();
     if (queryExpression !== undefined) {
         const queryRef = query(
             collection(db, collectionName),
-            where("itemCategory", "==", queryExpression)
+            where(queryExpression.first, queryExpression.middle, queryExpression.last)
         );
         return getDocs(queryRef);
     }
-    else {
-        const productCollectionRef = collection(db, collectionName);
-        return getDocs(productCollectionRef);
-    }
+    const productCollectionRef = collection(db, collectionName);
+    return getDocs(productCollectionRef);
 }
 
 export const getProductFirebase = (collectionName, productID) => {
@@ -30,7 +28,8 @@ export const createOrderFirebase = (clientData, cartData, cartTotal) => {
         clientData: clientData,
         cartData: cartData,
         orderDate: createOrderDate(),
-        cartTotal: cartTotal
+        cartTotal: cartTotal,
+        state:"created"
     }
     const db = getFirestore();
     const ordersCollectionRef = collection(db, "orders");
@@ -51,8 +50,6 @@ export const updateProductStock = (cartItem, collectionName) => {
                 return transaction.update(itemDocRef, { itemStock: newStock })
             })
     })
-        .then(() => console.log("Stock updated"))
-        .catch((e) => console.log("Error updating stock", e))
 }
 
 // Helper Functions

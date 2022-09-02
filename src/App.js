@@ -8,6 +8,7 @@ import ItemDetailContainer from './components/Items/ItemDetailContainer/ItemDeta
 import AboutUs from './components/AboutUs/AboutUs';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
+import ErrorPage from './components/util/ErrorPage/ErrorPage';
 // Custom Context Provider
 import CartProvider from './context/CartContext';
 // BS components
@@ -17,13 +18,12 @@ import React from 'react';
 // Router imports
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 function App() {
 
   return (
     <BrowserRouter>
       <CartProvider>
-        <NavBar/>
+        <NavBar />
         <Container fluid>
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
@@ -32,6 +32,7 @@ function App() {
             <Route path="aboutUs" element={<AboutUs />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="*" element={<ErrorPage errorMessage="Página no existe."/>} />
           </Routes>
         </Container>
       </CartProvider>

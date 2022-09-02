@@ -11,13 +11,10 @@ const CartWidget = () => {
 
     const [pulseToggle, setPulseToggle] = useState(false);
 
-    const {cartQuantity } = useContext(CartContext);
+    const { cartQuantity } = useContext(CartContext);
 
     useEffect(() => {
-        const cartIsEmpty = cartQuantity === 0;
-        if (cartIsEmpty) {
-            return;
-        }
+        
         setPulseToggle(true);
 
         const timer = setTimeout(() => {
@@ -30,18 +27,14 @@ const CartWidget = () => {
 
     }, [cartQuantity]);
 
-    const cartIsEmpty = cartQuantity === 0
+    const cartIsEmpty = cartQuantity === 0;
 
-    if (!cartIsEmpty) {
-        return <>
-            <Button variant="dark" className={`position-relative ${pulseToggle ? "cartAnimation" : ""}`}>
-                <i className="fa-solid fa-cart-shopping" />
-                <Badge className="position-absolute" bg="dark">{cartQuantity}</Badge>
-            </Button>
-        </>;
-    }
-    return <></>;
-
+    return <>
+        <Button variant="dark" className={`position-relative ${pulseToggle ? "cartAnimation" : ""}`}>
+            <i className="fa-solid fa-cart-shopping" />
+            {!cartIsEmpty && <Badge className="position-absolute" bg="dark">{cartQuantity}</Badge>}
+        </Button>
+    </>;
 }
 
 export default CartWidget;

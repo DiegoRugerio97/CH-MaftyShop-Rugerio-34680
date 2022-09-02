@@ -35,16 +35,16 @@ const ItemDetail = ({itemID, itemImg, itemName, itemStock, itemLongDescription, 
 
     return <Row className="itemDetail">
         <Col xs={12} md={9} lg={5}>
-            <img className="itemImg" src={itemImg} alt="Product" />
+            <img className="itemDetail-img" src={itemImg} alt="Product" />
         </Col>
         <Col lg={7}>
             <Row className="itemRow">
                 <div className="itemDetails">
-                    <h1 className="itemName">{itemName}</h1>
-                    <h2 className="itemPrice">{`$${itemPrice} (MXN)`}</h2>
-                    <p className="itemDescription">{itemLongDescription}</p>
+                    <h1 className="itemDetails-name">{itemName}</h1>
+                    <h2 className="itemDetails-price">{`$${itemPrice} (MXN)`}</h2>
+                    <p className="itemDetails-description">{itemLongDescription}</p>
                 </div>
-                <div className="itemCount">
+                <div className="itemDetails-count">
                     {quantityToAdd ? <FinishBrowsingButton/> : <ItemCount initial={1} stock={updatedStock} onAdd={addItemQuantity} />}
                 </div>
             </Row>

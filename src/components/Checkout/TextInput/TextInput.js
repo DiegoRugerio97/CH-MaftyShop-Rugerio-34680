@@ -49,8 +49,8 @@ const TextInput = ({ labelName, inputName, errorMessage, onInputChangeSetter, va
         setIsValid(isValueValid);
     }
 
-    const inputClass = `textInputField ${!isValid && wasTouched ? "invalidInput" : ""}`;
-    const messageClass = `textInputMessage ${!isValid && wasTouched ? "invalidMessage" : "hiddenMessage"}`;
+    const inputClass = `textInput-field ${!isValid && wasTouched ? "invalidInput" : ""}`;
+    const messageClass = `textInput-message ${!isValid && wasTouched ? "invalidMessage" : "hiddenMessage"}`;
 
     let validationFunction;
     if (validationType === "text") {
@@ -65,7 +65,7 @@ const TextInput = ({ labelName, inputName, errorMessage, onInputChangeSetter, va
 
     return <>
         <Form.Group controlId="inputName" className='textInput'>
-            <Form.Label className='textInputLabel'>{labelName}</Form.Label>
+            <Form.Label className='textInput-label'>{labelName}</Form.Label>
             <Form.Control className={inputClass} type="text" name={inputName} onChange={onChangeValueHandler} onBlur={validationFunction} value={inputValue} />
             <Form.Text className={messageClass}>
                 {errorMessage}
