@@ -9,10 +9,8 @@ El objetivo de esta webapp es la de simular un ecommerce de artículos de cultur
 * Figuras a escala de personajes de anime.
 
 Durante el desarrollo de esta webapp de ecommerce se practicaron los conceptos fundamentales de React como es el diseño basado en componentes y la reutilización de estos.
-La base de datos donde se esta almacenando toda la información de los productos que se ofrecen en el ecommerce es una Realtime Database de Firebase.
-Para consultar la lista de productos:
-https://mafty-shop-default-rtdb.firebaseio.com/productos.json
-En la app, se implemento Firestore con su respectiva conexion a traves de Firebase como la database de la app.
+La base de datos donde se esta almacenando toda la información de los productos, ordenes y categorias del ecommerce es un Firestore Database de Firebase.
+En la app, se implemento Firestore con su respectiva conexion a traves de Firebase y el paquete de firebase como la database de la app.
 
 ## Desarrollo
 
