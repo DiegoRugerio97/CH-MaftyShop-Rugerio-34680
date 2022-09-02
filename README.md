@@ -50,28 +50,35 @@ El paquete de firebase ofrece una variedad de métodos de Firestore que permiten
 ## Estructura
 
 **index.js**
+
 En el index.js se inicia la aplicación de firebase, la cual le da acceso a la webapp para acceder todos los servicios como Firestore o Auth.
 
 **App.js**
+
 El App.js implementa el CustomProvider para el CartContext, así como el NavBar y el BrowserRouter, únicamente modificando el contenido debajo del NavBar dependiendo de la ruta. En este espacio se renderiza el ItemListContainer, ItemDetailContainer, AboutUs, Cart, Checkout y ErrorPage.
 
 **CartContext**
+
 El CartContext es un custom provider encargado de administrar el cart, y contiene métodos para añadir, eliminar y modificar el Cart, así como funciones extra para obtener el total en costo y en productos.
 
 **ItemListContainer**
+
 Realiza una consulta a Firestore dependiendo de la ruta, en caso de no especificar la categoría, consulta por ítems en stock. Se utiliza el hook useEffect para esperar el mount del componente y efectuar las consultas. Renderiza condicionalmente utilizando un spinner y si no existe la categoría especificada regresa una ErrorPage.
 
 De igual manera, renderiza Items e Item, mostrando cada producto de manera individual.
 
 **ItemDetailContainer**
+
 Realiza una consulta al detalle del producto, consultando el documento especifico en Firestore, renderiza condicionalmente un spinner, ErrorPage o el detalle del producto. También incluye el ItemCount para poder cambiar la cantidad de ítems para agregar al cart. Al haber un evento en el ItemCount, el ItemDetail renderiza un botón para ir al Cart.
 
 **Cart**
+
 El Cart utiliza el CartContext para obtener los productos en el Cart y mostrarlos en una tabla, mostrando cada producto y los totales. De igual forma se implemento la funcionalidad para eliminar cada producto individualmente o para vaciar el Cart por completo. 
 
 El Cart es accesible a través del botón de completar compra en el ItemDetail o a través del icono de Cart en el NavBar, cuyo Widget esta renderizado condicionalmente de acuerdo a la cantidad de ítems en el Cart.
 
 **Checkout**
+
 Una vez existan ítems en el Cart y el usuario quiera terminar la compra, se redirige a la ruta Checkout, la cual, en caso de no tener ítems en el Cart, mostrara una pantalla para seguir comprando.
 
 La pantalla de Checkout esta conformada por un CheckoutForm, una colección de Inputs custom que piden información y la validan. Se implementaron validaciones para cada input y además uno general en el CheckoutForm para que coincidan los emails.
@@ -80,4 +87,5 @@ Una vez habilitado el botón para terminar el Checkout, se creará una orden, cr
 
 Se implemento un spinner y se le regresa al usuario el ID de la orden creada, terminando el flujo de la aplicación.
 
-
+## Navegación
+<img src="https://imgur.com/ds00RoN.gif" width="1000" />
