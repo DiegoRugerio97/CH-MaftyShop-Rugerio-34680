@@ -1,4 +1,19 @@
-.constructionPlaceholder{
-    margin: 0 auto;
-    text-align: center;
+.about {
+  margin: 5rem auto;
+  text-align: justify;
+  font-family: "Oswald", sans-serif;
+}
+
+.about-title {
+  font-size: 3rem;
+}
+
+.about-content {
+  font-size: 2rem;
+}
+
+.about-image{
+    display: block;
+    margin: 2rem auto;
+    border-radius: 1rem;
 }
